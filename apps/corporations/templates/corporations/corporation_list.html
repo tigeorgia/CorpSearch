@@ -1,0 +1,21 @@
+{% extends 'corporations/base.html' %}
+{% load i18n %}
+{% block corpcontent %}
+<table>
+<thead>
+<tr><th>{% trans 'ID Code' %}</th>
+    <th>{% trans 'Company Name' %}</th>
+    <th>{% trans 'Registry link' %}</th>
+</tr>
+</thead>
+
+<tbody>
+{% for c in corporations %}
+<tr><td>{{ c.id_code }}</td>
+    <td>{{ c.name }}</td>
+    <td><a href="{{c.registry_url}}" title="View on public registry" target="_blank">{% trans 'View on registry' %}</a></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

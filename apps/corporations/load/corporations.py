@@ -1,19 +1,31 @@
 # -*- coding: utf-8 -*-
 import json
+
+from django.db import transaction
+from django.core.exceptions import ObjectDoesNotExist
+
 from apps.corporations.models import Corporation
 import codecs
 import time
 
+@transaction.commit_on_success
 def load(infile):
     """ Inserts the corporations specified in infile into the
-    database, without checking for duplicates. Good for loading initial
-    data into the database."""
+    database. Checks for duplicates."""
     ifile = codecs.open(infile, encoding="utf-8-sig")
 
     results = []
+    i = 0
     for l in ifile:
-        results.append(parse_corp(l))
-    Corporation.objects.bulk_create(results)
+        if i % 1000 == 0:
+            print i
+        i += 1
+        corp = parse_corp(l)
+
+        try: # Avoid duplicates
+            Corporation.objects.get(id_code=corp.id_code)
+        except ObjectDoesNotExist: #TODO: Merge
+            corp.save()
 
 def parse_corp(corp_string):
     """ Takes a string which is a single JSON object, and constructs a

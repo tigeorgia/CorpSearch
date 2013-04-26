@@ -96,5 +96,6 @@ INSTALLED_APPS = (
     'south',
 
     # Custom apps
-    'apps.corporations'
+    'apps.corporations',
+    'apps.person',
 )

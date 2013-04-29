@@ -1,4 +1,5 @@
 from .models import Corporation
+from .forms import CorporationSearchForm
 
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -13,10 +14,13 @@ class CorporationListView(ListView):
 class CorporationSearchView(CorporationListView):
     def get_queryset(self):
         qs = Corporation.objects.all()
-        if self.request.GET.get('id_code'):
-            qs = qs.filter(id_code=self.request.GET.get('id_code'))
-        if self.request.GET.get('name'):
-            qs = qs.filter(name__icontains=self.request.GET.get('name'))
+
+        form = CorporationSearchForm(self.request.GET)
+        if form.is_valid():
+            if form.cleaned_data['id_code']:
+                qs = qs.filter(id_code=form.cleaned_data['id_code'])
+            qs = qs.filter(name__icontains=form.cleaned_data['name'])
+
         return qs
 
 class CorporationDetailView(DetailView):

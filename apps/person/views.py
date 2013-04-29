@@ -1,4 +1,5 @@
 from .models import Person, Affiliation
+from .forms import PersonSearchForm
 
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -13,12 +14,12 @@ class PersonListView(ListView):
 class PersonSearchView(PersonListView):
     def get_queryset(self):
         qs = Person.objects.all()
-        if self.request.GET.get('p_code'):
-            qs = qs.filter(personal_code=self.request.GET.get('p_code'))
-        if self.request.GET.get('name'):
-            qs = qs.filter(name__icontains=self.request.GET.get('name'))
-        if self.request.GET.get('address'):
-            qs = qs.filter(address__icontains=self.request.GET.get('address'))
+        form = PersonSearchForm(self.request.GET)
+        if form.is_valid():
+            if form.cleaned_data['personal_code']:
+                qs = qs.filter(personal_code=form.cleaned_data['personal_code'])
+            qs = qs.filter(name__icontains=form.cleaned_data['name'])
+            qs = qs.filter(address__icontains=form.cleaned_data['address'])
         return qs
 
 

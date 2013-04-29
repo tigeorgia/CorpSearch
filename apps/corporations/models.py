@@ -4,7 +4,7 @@ from django.db import models
 class Corporation(models.Model):
     # The legal ID code; this is what we usually mean when we 
     # talk about a corporation's ID code
-    id_code = models.CharField(max_length=50,blank=True,null=True)
+    id_code = models.CharField(max_length=50,blank=True,null=True,db_index=True)
     # Corporations which are "individual entrepreneurs" may be known
     # by the personal ID code of the individual instead.
     personal_code = models.CharField(max_length=50,blank=True,null=True)

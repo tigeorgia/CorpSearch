@@ -2,12 +2,14 @@
 {% block content %}
 <div id="corporation-search">
 <form action="{% url 'corporation-search' %}" method="get">{% csrf_token %}
+<h2>Corporation search</h2>
     {{ corpsearch }}
     <input type="submit" value="Search">
 </form>
 </div>
 <div id="people-search">
 <form action="{% url 'person-search' %}" method="get">{% csrf_token %}
+<h2>Person search</h2>
     {{ personsearch }}
     <input type="submit" value="Search">
 </form>

@@ -30,7 +30,7 @@
         </thead>
         <tbody>
             {% for a in person.affiliation_set.all %}
-                <tr><td>{{ a.corp.name }}</td>
+                <tr><td><a href="{{ a.corp.get_absolute_url }}" title="{% trans 'View detail' %}">{{ a.corp.name }}</a></td>
                     <td>{{ a.role }}</td>
                     <td><a href="{{a.cite_link}}" title="{% trans 'View documentation' %}">{% trans 'Documentation' %}</a></td>
                 </tr>

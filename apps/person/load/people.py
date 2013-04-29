@@ -8,7 +8,6 @@ from django.core.exceptions import ObjectDoesNotExist
 from apps.corporations.models import Corporation
 from apps.person.models import Person, Affiliation
 
-@transaction.commit_on_success
 def load_relations(infile):
     """ Loads a set of Person-Corp relations, creating Affiliation and
     People objects. Doesn't check the database for pre-existing data."""

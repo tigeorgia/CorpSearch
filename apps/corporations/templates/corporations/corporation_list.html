@@ -12,7 +12,7 @@
 <tbody>
 {% for c in corporations %}
 <tr><td>{{ c.id_code }}</td>
-    <td>{{ c.name }}</td>
+    <td><a href="{{ c.get_absolute_url }}" title="View corporation details">{{ c.name }}</a></td>
     <td><a href="{{c.registry_url}}" title="View on public registry" target="_blank">{% trans 'View on registry' %}</a></td>
 </tr>
 {% endfor %}

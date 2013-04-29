@@ -1,0 +1,44 @@
+{% load i18n %}
+{% block corpcontent %}
+<div id="corporation-profile">
+    <table id="corporation-attributes">
+        <tbody>
+            <tr><td>{% trans 'Name' %}:</td>
+                <td>{{ corporation.name }}</td>
+            </tr>
+            <tr><td>{% trans 'ID code' %}:</td>
+                <td>{{ corporation.id_code }}</td>
+            </tr>
+            <tr><td>{% trans 'Personal code' %}:</td>
+                <td>{{ corporation.personal_code }}</td>
+            </tr>
+            <tr><td>{% trans 'State registration code' %}:</td>
+                <td>{{ corporation.state_reg_code }}</td>
+            </tr>
+            <tr><td>{% trans 'Registration date' %}:</td>
+                <td>{{ corporation.registration_date }}</td>
+            <tr><td><a href="{{ corporation.registry_url }}" target="_blank" title="{% trans 'View details from the Public Registry database' %}">{% trans 'Public registry page' %}</a></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div id="affiliations">
+    <table id="affiliations-list">
+        <thead>
+            <tr><th>{% trans 'Person' %}</th>
+                <th>{% trans 'Role' %}</th>
+                <th>{% trans 'Documentation' %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in corporation.affiliation_set.all %}
+                <tr><td><a href="{{ a.person.get_absolute_url }}" title="{% trans 'View profile' %}">{{ a.person.name }}</a></td>
+                    <td>{{ a.role }}</td>
+                    <td><a href="{{a.cite_link}}" title="{% trans 'View documentation' %}">{% trans 'Documentation' %}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

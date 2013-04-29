@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 class Corporation(models.Model):
@@ -16,6 +17,9 @@ class Corporation(models.Model):
     name = models.CharField(max_length=250)
 
     registration_date = models.DateField()
+
+    def get_absolute_url(self):
+        return reverse('corporation-detail', args=[self.pk])
 
     def _get_registry_url(self):
         return u"https://enreg.reestri.gov.ge/main.php?c=app&m=show_legal_person&legal_code_id={}".format(self.registry_db_code)

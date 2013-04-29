@@ -10,7 +10,7 @@ from apps.person.models import Person, Affiliation
 
 def load_relations(infile):
     """ Loads a set of Person-Corp relations, creating Affiliation and
-    People objects. Doesn't check the database for pre-existing data."""
+    People objects. Checks for pre-existing data."""
     objects = []
     i = 0
     for l in infile:

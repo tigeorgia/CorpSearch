@@ -24,3 +24,13 @@ class Corporation(models.Model):
     def _get_registry_url(self):
         return u"https://enreg.reestri.gov.ge/main.php?c=app&m=show_legal_person&legal_code_id={}".format(self.registry_db_code)
     registry_url = property(_get_registry_url)
+
+class Extract(models.Model):
+    """ Certain types of info about corporations are stored only
+    in documents called Extracts. In order to figure out the most up-to-date
+    address and email address, we need to use Extracts."""
+    date = models.DateField()
+    address = models.CharField(max_length=250)
+    email = models.CharField(max_length=250)
+    corp = models.ForeignKey('Corporation')
+

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="corporation-search">
+<form action="{% url 'corporation-search' %}" method="get">{% csrf_token %}
+    {{ corpsearch }}
+    <input type="submit" value="Search">
+</form>
+</div>
+<div id="people-search">
+<form action="{% url 'person-search' %}" method="get">{% csrf_token %}
+    {{ personsearch }}
+    <input type="submit" value="Search">
+</form>
+</div>
+{% endblock %}

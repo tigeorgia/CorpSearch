@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 from apps.corporations.models import Corporation
 
 #TODO: Consider adding db_index to name, personal_code
@@ -11,6 +12,9 @@ class Person(models.Model):
     nationality = models.CharField(max_length=100,blank=True,null=True)
 
     affiliations = models.ManyToManyField(Corporation, through='Affiliation')
+
+    def get_absolute_url(self):
+        return reverse('person-detail', args=[self.pk])
 
     def detail(self):
         """ A very rough calculation of how much detail we have on this

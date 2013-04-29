@@ -12,7 +12,7 @@
 <tbody>
 {% for p in people %}
 <tr><td>{{ p.personal_code }}</td>
-    <td><a href="#" title="View details">{{ p.name }}</a></td>
+    <td><a href="{{ p.get_absolute_url }}" title="View details">{{ p.name }}</a></td>
     <td>{{ p.address }}</td>
 </tr>
 {% endfor %}

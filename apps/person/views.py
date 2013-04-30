@@ -13,13 +13,16 @@ class PersonListView(ListView):
 
 class PersonSearchView(PersonListView):
     def get_queryset(self):
-        qs = Person.objects.all()
+        qs = super(PersonSearchView, self).get_queryset()
+
         form = PersonSearchForm(self.request.GET)
         if form.is_valid():
             if form.cleaned_data['personal_code']:
                 qs = qs.filter(personal_code=form.cleaned_data['personal_code'])
-            qs = qs.filter(name__icontains=form.cleaned_data['name'])
-            qs = qs.filter(address__icontains=form.cleaned_data['address'])
+            if form.cleaned_data['name']:
+                qs = qs.filter(name__icontains=form.cleaned_data['name'])
+            if form.cleaned_data['address']:
+                qs = qs.filter(address__icontains=form.cleaned_data['address'])
         return qs
 
 

@@ -19,7 +19,12 @@ class CorporationSearchView(CorporationListView):
         if form.is_valid():
             if form.cleaned_data['id_code']:
                 qs = qs.filter(id_code=form.cleaned_data['id_code'])
-            qs = qs.filter(name__icontains=form.cleaned_data['name'])
+            if form.cleaned_data['address']:
+                qs = qs.filter(extract__address__icontains=form.cleaned_data['address']).distinct()
+            if form.cleaned_data['email']:
+                qs = qs.filter(extract__email__icontains=form.cleaned_data['email']).distinct()
+            if form.cleaned_data['name']:
+                qs = qs.filter(name__icontains=form.cleaned_data['name'])
 
         return qs
 

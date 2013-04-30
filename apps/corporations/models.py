@@ -29,6 +29,7 @@ class Corporation(models.Model):
         if extracts.count() > 0:
             return extracts.order_by('-date')[0]
 
+    latest_extract = property(get_latest_extract)
     registry_url = property(_get_registry_url)
 
 class Extract(models.Model):

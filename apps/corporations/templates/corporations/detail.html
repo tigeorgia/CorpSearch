@@ -20,6 +20,12 @@
             <tr><td><a href="{{ corporation.registry_url }}" target="_blank" title="{% trans 'View details from the Public Registry database' %}">{% trans 'Public registry page' %}</a></td>
                 <td></td>
             </tr>
+            <tr><td>{% trans 'Address' %}:</td>
+                <td>{{ corporation.get_latest_extract.address }}</td>
+            </tr>
+            <tr><td>{% trans 'Email' %}:</td>
+                <td>{{ corporation.get_latest_extract.email }}</td>
+            </tr>
         </tbody>
     </table>
 </div>

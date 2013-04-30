@@ -5,6 +5,7 @@
 <thead>
 <tr><th>{% trans 'ID Code' %}</th>
     <th>{% trans 'Company Name' %}</th>
+    <th>{% trans 'Address' %}</th>
     <th>{% trans 'Registry link' %}</th>
 </tr>
 </thead>
@@ -13,6 +14,7 @@
 {% for c in corporations %}
 <tr><td>{{ c.id_code }}</td>
     <td><a href="{{ c.get_absolute_url }}" title="View corporation details">{{ c.name }}</a></td>
+    <td>{{ c.get_latest_extract.address }}</td>
     <td><a href="{{c.registry_url}}" title="View on public registry" target="_blank">{% trans 'View on registry' %}</a></td>
 </tr>
 {% endfor %}

@@ -13,7 +13,7 @@ class CorporationListView(ListView):
 
 class CorporationSearchView(CorporationListView):
     def get_queryset(self):
-        qs = Corporation.objects.all()
+        qs = super(CorporationSearchView, self).get_queryset()
 
         form = CorporationSearchForm(self.request.GET)
         if form.is_valid():

@@ -23,6 +23,12 @@ class Corporation(models.Model):
 
     def _get_registry_url(self):
         return u"https://enreg.reestri.gov.ge/main.php?c=app&m=show_legal_person&legal_code_id={}".format(self.registry_db_code)
+    
+    def get_latest_extract(self):
+        extracts = self.extract_set
+        if extracts.count() > 0:
+            return extracts.order_by('-date')[0]
+
     registry_url = property(_get_registry_url)
 
 class Extract(models.Model):

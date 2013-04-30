@@ -7,12 +7,17 @@ ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
 
+import os, sys
+PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
+
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
+        # Using sqlite for ease of installation but for production
+        # I suggest postgres or mysql.
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
+        'NAME': '/path/to/database.db',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -66,6 +71,10 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
 )
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
+    'django.contrib.auth.context_processors.auth',
+)
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -81,6 +90,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PROJECT_PATH, 'templates')
 )
 
 INSTALLED_APPS = (
@@ -98,4 +108,5 @@ INSTALLED_APPS = (
     # Custom apps
     'apps.corporations',
     'apps.person',
+    'apps.search_utils',
 )

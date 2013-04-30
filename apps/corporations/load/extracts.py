@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-import json
-import codecs
+import json, codecs
+from datetime import datetime
 
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -25,11 +25,19 @@ def load_extracts(infile):
                  "corp_address": "address",
                  "corp_email": "email",}
         obj = {remap[key]: val for key, val in obj.items()}
+        
         try:
             corp = Corporation.objects.get(id_code=obj['corp'])
         except (ObjectDoesNotExist, KeyError):
             continue
         obj['corp'] = corp
+        try:
+            obj['date'] = _format_date(obj['date'])
+        except KeyError:
+            pass
         extract = Extract(**obj)
+        extracts.append(extract)
 
     Extract.objects.bulk_create(extracts)
+def _format_date(string):
+    return datetime.strptime(string, "%d/%m/%Y %H:%M:%S")#.strftime("%Y-%m-%d %H:%M:%S")

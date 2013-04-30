@@ -29,7 +29,7 @@ class Extract(models.Model):
     """ Certain types of info about corporations are stored only
     in documents called Extracts. In order to figure out the most up-to-date
     address and email address, we need to use Extracts."""
-    date = models.DateField(null=True)
+    date = models.DateTimeField(null=True)
     address = models.CharField(max_length=250,null=True)
     email = models.CharField(max_length=250,null=True)
     corp = models.ForeignKey('Corporation')

@@ -8,9 +8,12 @@ from django.core.exceptions import ObjectDoesNotExist
 from apps.corporations.models import Corporation
 from apps.person.models import Person, Affiliation
 
-def load_relations(infile):
-    """ Loads a set of Person-Corp relations, creating Affiliation and
-    People objects. Checks for pre-existing data."""
+@transaction.commit_on_success
+def load_people_from_relations(infile):
+    """ Loads a set of Person-Corp relations, and creates Person objects from
+    them. Checks for pre-existing Persons.
+    Returns an array of affiliation objects parsed from JSON for use in
+    loading affiliations. """
     objects = []
     i = 0
     for l in infile:
@@ -26,8 +29,11 @@ def load_relations(infile):
             pers.save()
 
         objects.append(data) # Come back to affiliations after people
+    return objects
 
-    # Now, do the affiliations
+def load_affiliations(objects)
+    """ Creates affiliations from an array of JSON objects. Requires 
+    corporation and person tables to be populated."""
     i = 0
     affiliations = []
     for obj in objects:

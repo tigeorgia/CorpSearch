@@ -1,0 +1,11 @@
+{% load i18n append_to_get %}
+<div id="pagination">
+{% if page_obj.has_previous %}
+<a href="{% append_to_get page=page_obj.previous_page_number %}" title="{% trans 'Previous page' %}">{% trans 'Previous page' %}</a>
+{% endif %}
+<span id="current-page">{% trans 'Page' %}: {{ page_obj.number }}/{{ paginator.num_pages }}</span>
+
+{% if page_obj.has_next %}
+<a href="{% append_to_get page=page_obj.next_page_number %}" title="{% trans 'Next page' %}">{% trans 'Next page' %}</a>
+{% endif %}
+</div>

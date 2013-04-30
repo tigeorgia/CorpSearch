@@ -7,6 +7,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 class CorporationListView(ListView):
+    paginate_by = 25
     model = Corporation
     context_object_name = 'corporations'
     template_name = 'corporations/corporation_list.html'

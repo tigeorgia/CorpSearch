@@ -31,7 +31,7 @@ def load_people_from_relations(infile):
         objects.append(data) # Come back to affiliations after people
     return objects
 
-def load_affiliations(objects)
+def load_affiliations(objects):
     """ Creates affiliations from an array of JSON objects. Requires 
     corporation and person tables to be populated."""
     i = 0

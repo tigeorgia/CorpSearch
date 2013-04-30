@@ -6,17 +6,16 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from apps.corporations.models import Corporation
 import codecs
-import time
+from datetime import datetime
 
 @transaction.commit_on_success
-def load(infile):
+def load_corporations(infile):
     """ Inserts the corporations specified in infile into the
-    database. Checks for duplicates."""
-    ifile = codecs.open(infile, encoding="utf-8-sig")
+    database. Checks for duplicates. Requires a file buffer."""
 
     results = []
     i = 0
-    for l in ifile:
+    for l in infile:
         if i % 1000 == 0:
             print i
         i += 1
@@ -57,7 +56,7 @@ def parse_corp(corp_string):
     try:
         date_geo = data["registration_date"]
         date_eng = _substitute_date(date_geo)
-        date = time.strptime(date_eng,"%d %B %Y")
+        date = datetime.strptime(date_eng,"%d %B %Y")
         corp.registration_date = date
     except KeyError:
         pass

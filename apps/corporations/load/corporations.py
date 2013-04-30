@@ -58,7 +58,7 @@ def parse_corp(corp_string):
         date_geo = data["registration_date"]
         date_eng = _substitute_date(date_geo)
         date = time.strptime(date_eng,"%d %B %Y")
-        corp.registration_date = time.strftime("%Y-%m-%d",date)
+        corp.registration_date = date
     except KeyError:
         pass
 

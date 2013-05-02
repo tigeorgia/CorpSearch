@@ -5,11 +5,12 @@ from datetime import datetime
 from django.core.exceptions import ObjectDoesNotExist
 
 from apps.corporations.models import Corporation, Extract
+from apps.corporations.forms import ExtractForm
 
 def load_extracts(infile):
     """ Adds extracts to the corresponding Corporations."""
-    extracts = []
     i = 0
+    extracts = []
     for l in infile:
         if i % 1000 == 0:
             print i
@@ -30,13 +31,14 @@ def load_extracts(infile):
             corp = Corporation.objects.get(id_code=obj['corp'])
         except (ObjectDoesNotExist, KeyError):
             continue
-        obj['corp'] = corp
+        obj['corp'] = corp.pk
         try:
             obj['date'] = _format_date(obj['date'])
         except KeyError:
             pass
-        extract = Extract(**obj)
-        extracts.append(extract)
+        if ExtractForm(obj).is_valid():
+            obj['corp'] = corp
+            extracts.append(Extract(**obj))
 
     Extract.objects.bulk_create(extracts)
 def _format_date(string):

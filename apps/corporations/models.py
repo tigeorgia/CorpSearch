@@ -16,7 +16,7 @@ class Corporation(models.Model):
     
     name = models.CharField(max_length=250)
 
-    registration_date = models.DateField()
+    registration_date = models.DateField(blank=True,null=True)
 
     def get_absolute_url(self):
         return reverse('corporation-detail', args=[self.pk])
@@ -36,8 +36,8 @@ class Extract(models.Model):
     """ Certain types of info about corporations are stored only
     in documents called Extracts. In order to figure out the most up-to-date
     address and email address, we need to use Extracts."""
-    date = models.DateTimeField(null=True)
-    address = models.CharField(max_length=250,null=True)
-    email = models.CharField(max_length=250,null=True)
+    date = models.DateTimeField(blank=True,null=True)
+    address = models.CharField(max_length=250,blank=True,null=True)
+    email = models.CharField(max_length=250,blank=True,null=True)
     corp = models.ForeignKey('Corporation')
 

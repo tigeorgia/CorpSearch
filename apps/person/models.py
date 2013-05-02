@@ -8,10 +8,10 @@ class Person(models.Model):
     personal_code = models.CharField(max_length=50,db_index=True)
     address = models.CharField(max_length=200,blank=True,null=True)
 
-    dob = models.DateField(null=True)
+    dob = models.DateField(blank=True,null=True)
     nationality = models.CharField(max_length=100,blank=True,null=True)
 
-    affiliations = models.ManyToManyField(Corporation, through='Affiliation')
+    affiliations = models.ManyToManyField(Corporation, through='Affiliation',blank=True,null=True)
 
     def get_absolute_url(self):
         return reverse('person-detail', args=[self.pk])
@@ -35,6 +35,6 @@ class Affiliation(models.Model):
     cite_type = models.CharField(max_length=100)
     cite_link = models.URLField()
 
-    start_date = models.DateField(null=True)
-    end_date = models.DateField(null=True)
+    start_date = models.DateField(blank=True,null=True)
+    end_date = models.DateField(blank=True,null=True)
     is_ongoing = models.NullBooleanField() # Is the relationship ongoing?

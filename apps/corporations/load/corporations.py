@@ -5,6 +5,7 @@ from django.db import transaction
 from django.core.exceptions import ObjectDoesNotExist
 
 from apps.corporations.models import Corporation
+from apps.corporations.forms import CorporationForm
 import codecs
 from datetime import datetime
 
@@ -13,14 +14,14 @@ def load_corporations(infile):
     """ Inserts the corporations specified in infile into the
     database. Checks for duplicates. Requires a file buffer."""
 
-    results = []
     i = 0
     for l in infile:
         if i % 1000 == 0:
             print i
         i += 1
         corp = parse_corp(l)
-
+        if corp is None:
+            continue
         try: # Avoid duplicates
             Corporation.objects.get(id_code=corp.id_code)
         except ObjectDoesNotExist: #TODO: Merge
@@ -32,38 +33,37 @@ def parse_corp(corp_string):
 
     data = json.loads(corp_string)
     corp = Corporation()
-    # TODO: Make this not suck, move into custom init with field mappings.
+    remap = {"name": "name",
+             "id_code_legal": "id_code",
+             "personal_code": "personal_code",
+             "state_reg_code": "state_reg_code",
+             "id_code_reestri_db": "registry_db_code",
+             "registration_date": "registration_date"}
+    obj = {}
+    for key, val in data.items():
+        try:
+            obj[remap[key]] = val
+            
+        except KeyError:
+            pass
+
     try:
-        corp.name = data["name"]
-    except KeyError:
-        pass
-    try:
-        corp.id_code = data["id_code_legal"]
-    except KeyError:
-        pass
-    try:
-        corp.personal_code = data["personal_code"]
-    except KeyError:
-        pass
-    try:
-        corp.state_reg_code = data["state_reg_code"]
-    except KeyError:
-        pass
-    try:
-        corp.registry_db_code = data["id_code_reestri_db"]
-    except KeyError:
-        pass
-    try:
-        date_geo = data["registration_date"]
+        date_geo = obj["registration_date"]
         date_eng = _substitute_date(date_geo)
-        date = datetime.strptime(date_eng,"%d %B %Y")
-        corp.registration_date = date
+        if date_eng != u"":
+            date = datetime.strptime(date_eng,"%d %B %Y")
+            obj["registration_date"] = date
     except KeyError:
         pass
 
-    return corp
+    if CorporationForm(obj).is_valid():
+        return Corporation(**obj)
+    else:
+        return None
 
 def _substitute_date(string):
+    if string is None:
+        return ""
     dates = [(u"January",u"იანვარი"),
              (u"February",u"თებერვალი"),
              (u"March",u"მარტი"),

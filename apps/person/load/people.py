@@ -7,9 +7,9 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from apps.corporations.models import Corporation
 from apps.person.models import Person, Affiliation
-
+from apps.person.forms import PersonForm, AffiliationForm
 @transaction.commit_on_success
-def load_people_from_relations(infile):
+def load_people_from_affiliations(infile):
     """ Loads a set of Person-Corp relations, and creates Person objects from
     them. Checks for pre-existing Persons.
     Returns an array of affiliation objects parsed from JSON for use in
@@ -21,29 +21,39 @@ def load_people_from_relations(infile):
             print i
         i += 1
         data = json.loads(l)
-        pers = Person(**data['person'])
-    
-        try:
-            Person.objects.get(personal_code=pers.personal_code)
-        except ObjectDoesNotExist: #TODO: Merge person data
-            pers.save()
+        if PersonForm(data['person']).is_valid():
+            pers = Person(**data['person'])
+            try:
+                Person.objects.get(personal_code=pers.personal_code)
+            except ObjectDoesNotExist: #TODO: Merge person data
+                pers.save()
 
-        objects.append(data) # Come back to affiliations after people
-    return objects
-
-def load_affiliations(objects):
+def load_affiliations(infile):
     """ Creates affiliations from an array of JSON objects. Requires 
     corporation and person tables to be populated."""
     i = 0
+    #h = hpy()
     affiliations = []
-    for obj in objects:
+    for l in infile:
+        obj = json.loads(l)
         if i % 1000 == 0:
             print i
+        if i % 10000 == 0:
+            # Affiliation objects are large because they contain
+            # both a Corporation and a Person object.
+            # So flush the array every 10000 items to keep memory usage
+            # reasonable.
+            print("Saving past 10,000ish")
+            Affiliation.objects.bulk_create(affiliations)
+            affiliations = []
+            #print h.heap()
         i += 1
         try:
             pers = Person.objects.get(personal_code=obj['person']['personal_code'])
             corp = Corporation.objects.get(id_code=obj['fk_corp_id_code'])
         except KeyError:
+            continue
+        except ObjectDoesNotExist:
             continue
         remap = {"fk_corp_id_code": "corp",
                  "relation_type": "role",
@@ -52,18 +62,28 @@ def load_affiliations(objects):
                  "cite_link": "cite_link"}
 
         attrs = {remap[key]: val for key, val in obj.items()}
-        attrs["corp"] = corp
-        attrs["person"] = pers
+        attrs["corp"] = corp.pk
+        attrs["person"] = pers.pk
         try:
             for role in obj['relation_type']:
                 attrs["role"] = role
+                if AffiliationForm(attrs).is_valid():
+                    attrs["corp"] = corp
+                    attrs["person"] = pers
+                    affil = Affiliation(**attrs)
+                    attrs["corp"] = corp.pk
+                    attrs["person"] = pers.pk
+
+                    affiliations.append(affil)
+        except KeyError:
+            if AffiliationForm(attrs).is_valid():
+                attrs["corp"] = corp
+                attrs["person"] = pers
                 affil = Affiliation(**attrs)
                 affiliations.append(affil)
-        except KeyError:
-            affil = Affiliation(**attrs)
-            affiliations.append(affil)
-
+                #affil.save()
     Affiliation.objects.bulk_create(affiliations)
+
 
 def parse_person(json_string):
     """ Takes a json object and converts it into a Person object."""

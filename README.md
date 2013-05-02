@@ -20,18 +20,20 @@ This data is stored in JSON files; there are three JSON files that are currently
 * PersonCorpRelation.json
 * RegistryExtract.json
 
-The functions to load data from these files into the database are located in
-apps/corporations/load and apps/person/load, but there is unfortunately no
-completely automated load script yet.
+In order to load data, management commands have been created (in the util app).
+To load data for the first time, AFTER you've run syncdb and migrate in the 
+installation instructions, copy the three files above into a folder called 
+"data" in the same directory as this README file.
 
-You will need to open up a Django shell using `manage.py shell` and then import
-the data files manually using the functions in these files:
-* Corporation.json -> apps/corporations/load/corporations.py
-* PersonCorpRelation.json -> apps/person/load/people.py
-* RegistryExtract.json -> apps/corporations/load/extracts.py
+Next, issue (in this order):
 
-**Important:** You MUST load the data in the following order:
-1. Corporations
-2. People (from PersonCorpRelation.json)
-3. Affiliations (from PersonCorpRelation.json)
-4. Extracts (from RegistryExtract.json)
+1. `manage.py loadcorps`
+2. `manage.py loadpeople`
+
+And then sit back and wait, because it'll take a while.
+
+If you need to reload the data for some reason (e.g. to load a new scrape), just
+issue: `manage.py resetcorps` or `manage.py resetpeople`.
+
+The commands have been optimized to balance speed and memory usage; you
+shouldn't have a problem on most modern machines.

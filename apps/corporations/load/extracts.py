@@ -36,6 +36,8 @@ def load_extracts(infile):
             obj['date'] = _format_date(obj['date'])
         except KeyError:
             pass
+        except ValueError:
+            obj['date'] = None
         if ExtractForm(obj).is_valid():
             obj['corp'] = corp
             extracts.append(Extract(**obj))

@@ -38,3 +38,5 @@ class Affiliation(models.Model):
     start_date = models.DateField(blank=True,null=True)
     end_date = models.DateField(blank=True,null=True)
     is_ongoing = models.NullBooleanField() # Is the relationship ongoing?
+
+    share = models.FloatField(blank=True,null=True)

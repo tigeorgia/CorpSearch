@@ -1,6 +1,7 @@
 {% load i18n %}
 {% block perscontent %}
 <div id="person-profile">
+    <h2>{{ person.name }}</h2>
     <table id="person-attributes">
         <tbody>
             <tr><td>{% trans 'Name' %}:</td>
@@ -21,6 +22,7 @@
     </table>
 </div>
 <div id="affiliations">
+    <h2>{% trans 'Listed affiliations' %}</h2>
     <table id="affiliations-list">
         <thead>
             <tr><th>{% trans 'Company' %}</th>
@@ -30,12 +32,35 @@
         </thead>
         <tbody>
             {% for a in person.affiliation_set.all %}
+                {% if a.role != "პარტნიორი" %}
                 <tr><td><a href="{{ a.corp.get_absolute_url }}" title="{% trans 'View detail' %}">{{ a.corp.name }}</a></td>
                     <td>{{ a.role }}</td>
                     <td><a href="{{a.cite_link}}" title="{% trans 'View documentation' %}">{% trans 'Documentation' %}</a></td>
                 </tr>
+                {% endif %}
             {% endfor %}
         </tbody>
     </table>
 </div>
+<div id="ownership">
+    <h2>{% trans 'Listed interests' %}</h2>
+    <table id="ownership-list">
+        <thead>
+            <tr><th>{% trans 'Company' %}</th>
+                <th>{% trans 'Share' %}</th>
+                <th>{% trans 'Documentation' %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in person.affiliation_set.all %}
+                {% if a.role == "პარტნიორი" %}
+                <tr><td><a href="{{ a.corp.get_absolute_url }}" title="{% trans 'View detail' %}">{{ a.corp.name }}</a></td>
+                    <td>{{ a.share }}</td>
+                    <td><a href="{{a.cite_link}}" title="{% trans 'View documentation' %}">{% trans 'Documentation' %}</a></td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+<div>
 {% endblock %}

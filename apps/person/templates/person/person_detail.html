@@ -4,20 +4,52 @@
     <h2>{{ person.name }}</h2>
     <table id="person-attributes">
         <tbody>
-            <tr><td>{% trans 'Name' %}:</td>
-                <td>{{ person.name }}</td>
-            </tr>
+            {# I'm pretty annoyed about the way this table is constructed
+            but I couldn't come up with anything better. The |default filter
+            is perfect for this situation, but the only way to make the result
+            of a filter translatable is to bind it to a translation blocktrans:
+            
+            <td>{% trans 'Personal number' %}:</td>
+            <td>
+            {% blocktrans with person.personal_code|default:"Unknown" as pc %}
+            {{ pc }}
+            {% endblocktrans %}
+            </td>
+
+            And I'm not even 100% certain that would work. Doing it this way
+            is an extra two lines per <td> but it's a lot easier to figure out
+            what's going on, imho. #}
             <tr><td>{% trans 'Personal number' %}:</td>
-                <td>{{ person.personal_code }}</td>
+                <td>{% if person.personal_code %}
+                    {{ person.personal_code }}
+                    {% else %}
+                    {% trans "Unknown" %}
+                    {% endif %}
+                </td>
             </tr>
             <tr><td>{% trans 'Address' %}:</td>
-                <td>{{ person.address }}</td>
+                <td>{% if person.address %}
+                    {{ person.address }}
+                    {% else %}
+                    {% trans "Unknown" %}
+                    {% endif %}
+                </td>
             </tr>
             <tr><td>{% trans 'Date of birth' %}:</td>
-                <td>{{ person.dob }}</td>
+                <td>{% if person.dob%}
+                    {{ person.dob}}
+                    {% else %}
+                    {% trans "Unknown" %}
+                    {% endif %}
+                </td>
             </tr>
             <tr><td>{% trans 'Nationality' %}:</td>
-                <td>{{ person.nationality }}</td>
+                <td>{% if person.nationality %}
+                    {{ person.nationality }}
+                    {% else %}
+                    {% trans "Unknown" %}
+                    {% endif %}
+                </td>
         </tbody>
     </table>
 </div>
@@ -43,7 +75,7 @@
     </table>
 </div>
 <div id="ownership">
-    <h2>{% trans 'Listed interests' %}</h2>
+    <h2>{% trans 'Listed ownership interests' %}</h2>
     <table id="ownership-list">
         <thead>
             <tr><th>{% trans 'Company' %}</th>

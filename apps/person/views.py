@@ -24,7 +24,7 @@ class PersonSearchView(PersonListView):
                 qs = qs.filter(name__icontains=form.cleaned_data['name'])
             if form.cleaned_data['address']:
                 qs = qs.filter(address__icontains=form.cleaned_data['address'])
-        return qs
+        return qs.order_by('name')
 
 
 class PersonDetailView(DetailView):

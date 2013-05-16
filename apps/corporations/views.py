@@ -27,7 +27,7 @@ class CorporationSearchView(CorporationListView):
             if form.cleaned_data['name']:
                 qs = qs.filter(name__icontains=form.cleaned_data['name'])
 
-        return qs
+        return qs.order_by('name')
 
 class CorporationDetailView(DetailView):
     model = Corporation

@@ -24,6 +24,8 @@ class PersonSearchView(PersonListView):
                 qs = qs.filter(name__icontains=form.cleaned_data['name'])
             if form.cleaned_data['address']:
                 qs = qs.filter(address__icontains=form.cleaned_data['address'])
+            if form.cleaned_data['nationality']:
+                qs = qs.filter(nationality__icontains=form.cleaned_data['nationality'])
         return qs.order_by('name')
 
 

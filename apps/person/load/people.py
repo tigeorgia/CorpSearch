@@ -38,6 +38,7 @@ def load_affiliations(infile):
         obj = json.loads(l)
         if i % 1000 == 0:
             print i
+        i += 1
         if i % 10000 == 0:
             # Affiliation objects are large because they contain
             # both a Corporation and a Person object.
@@ -47,7 +48,6 @@ def load_affiliations(infile):
             Affiliation.objects.bulk_create(affiliations)
             affiliations = []
             #print h.heap()
-        i += 1
         try:
             pers = Person.objects.get(personal_code=obj['person']['personal_code'])
             corp = Corporation.objects.get(id_code=obj['fk_corp_id_code'])
@@ -59,9 +59,18 @@ def load_affiliations(infile):
                  "relation_type": "role",
                  "person": "person",
                  "cite_type": "cite_type",
-                 "cite_link": "cite_link"}
+                 "cite_link": "cite_link",
+                 "share": "share",}
 
         attrs = {remap[key]: val for key, val in obj.items()}
+        if "share" in obj:
+            attrs["share"] = obj["share"]
+            try:
+                attrs["share"] = percent_to_float(attrs["share"])
+            except ValueError:
+                attrs["share"] = None
+        else:
+            attrs["share"] = None
         attrs["corp"] = corp.pk
         attrs["person"] = pers.pk
         try:
@@ -82,8 +91,11 @@ def load_affiliations(infile):
                 affil = Affiliation(**attrs)
                 affiliations.append(affil)
                 #affil.save()
+    print("Finished; loading remainder...")
     Affiliation.objects.bulk_create(affiliations)
 
+def percent_to_float(string):
+    return float(string.strip("% "))/100
 
 def parse_person(json_string):
     """ Takes a json object and converts it into a Person object."""

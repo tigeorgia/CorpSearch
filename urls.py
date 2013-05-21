@@ -9,7 +9,7 @@ admin.autodiscover()
 from apps.corporations.api import CorporationResource
 from apps.person.api import PersonResource
 from tastypie.api import Api
-v1_api = Api()
+v1_api = Api(api_name='v1')
 v1_api.register(CorporationResource())
 v1_api.register(PersonResource())
 

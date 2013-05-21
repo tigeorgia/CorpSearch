@@ -15,6 +15,11 @@ def load_extracts(infile):
         if i % 1000 == 0:
             print i
         i += 1
+        if i % 10000 == 0:
+            print ("Loading a batch.")
+            Extract.objects.bulk_create(extracts)
+            extracts = []
+
 
         try:
             obj = json.loads(l)
@@ -42,6 +47,7 @@ def load_extracts(infile):
             obj['corp'] = corp
             extracts.append(Extract(**obj))
 
+    print("Loading the remainder.")
     Extract.objects.bulk_create(extracts)
 def _format_date(string):
     return datetime.strptime(string, "%d/%m/%Y %H:%M:%S")#.strftime("%Y-%m-%d %H:%M:%S")

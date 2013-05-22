@@ -1,16 +1,17 @@
 from .models import Corporation
 from .forms import CorporationSearchForm
+from apps.util.views import CsvResponseMixin
 
-from django.views.generic.list import ListView
+from django.views.generic.list import ListView, BaseListView, MultipleObjectTemplateResponseMixin
 from django.views.generic.detail import DetailView
+
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
-class CorporationListView(ListView):
-    paginate_by = 25
+
+class CorporationListView(BaseListView):
     model = Corporation
     context_object_name = 'corporations'
-    template_name = 'corporations/corporation_list.html'
 
 class CorporationSearchView(CorporationListView):
     def get_queryset(self):
@@ -28,6 +29,12 @@ class CorporationSearchView(CorporationListView):
                 qs = qs.filter(name__icontains=form.cleaned_data['name'])
 
         return qs.order_by('name')
+
+class CorporationPagedTemplateSearchView(CorporationSearchView, MultipleObjectTemplateResponseMixin):
+    paginate_by = 25
+
+class CorporationCsvSearchView(CorporationSearchView, CsvResponseMixin):
+    pass
 
 class CorporationDetailView(DetailView):
     model = Corporation

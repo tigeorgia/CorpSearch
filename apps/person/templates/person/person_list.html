@@ -19,4 +19,7 @@
 </tbody>
 </table>
 {% include 'paginate.html' %}
+{% if paginator.num_pages < 100 %}
+<div id="export"><a href="{% url 'person-search-csv' %}?{{ request.META.QUERY_STRING }}">{% trans 'Download for Excel' %}</a></div>
+{% endif %}
 {% endblock %}

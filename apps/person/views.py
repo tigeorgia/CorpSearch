@@ -1,16 +1,16 @@
 from .models import Person, Affiliation
 from .forms import PersonSearchForm
+from apps.util.views import CsvResponseMixin
 
-from django.views.generic.list import ListView
+from django.views.generic.list import BaseListView, ListView, MultipleObjectTemplateResponseMixin
+
 from django.views.generic.detail import DetailView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
-class PersonListView(ListView):
-    paginate_by = 25
+class PersonListView(BaseListView):
     model = Person
     context_object_name = 'people'
-    template_name = 'person/person_list.html'
 
 class PersonSearchView(PersonListView):
     def get_queryset(self):
@@ -28,6 +28,11 @@ class PersonSearchView(PersonListView):
                 qs = qs.filter(nationality__icontains=form.cleaned_data['nationality'])
         return qs.order_by('name')
 
+class PersonPagedTemplateSearchView(PersonSearchView, MultipleObjectTemplateResponseMixin):
+    paginate_by = 25
+
+class PersonCsvSearchView(PersonSearchView, CsvResponseMixin):
+    pass
 
 class PersonDetailView(DetailView):
     model = Person

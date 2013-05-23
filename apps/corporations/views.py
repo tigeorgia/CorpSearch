@@ -4,6 +4,7 @@ from apps.util.views import CsvResponseMixin
 
 from django.views.generic.list import ListView, BaseListView, MultipleObjectTemplateResponseMixin
 from django.views.generic.detail import DetailView
+from django.views.generic.base import TemplateView
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -39,4 +40,3 @@ class CorporationCsvSearchView(CorporationSearchView, CsvResponseMixin):
 class CorporationDetailView(DetailView):
     model = Corporation
     context_object_name = 'corporation'
-    template_name = 'corporations/detail.html'

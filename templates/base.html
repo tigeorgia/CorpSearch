@@ -1,7 +1,13 @@
 {% load i18n %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="{% static "css/blueprint/screen.css" %}" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="{% static "css/blueprint/print.css" %}" type="text/css" media="print">
+<!--[if lt IE 8]>
+  <link rel="stylesheet" href="{% static "css/blueprint/ie.css" %}" type="text/css" media="screen, projection">
+  <![endif]-->
 {% block css %}
 {% endblock %}
 {% block script %}

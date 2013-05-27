@@ -1,4 +1,5 @@
 *.swp
+static/css/blueprint
 data
 *.sqlite
 *.pyc

@@ -11,6 +11,7 @@ Installation
 6. `manage.py syncdb`
 7. `manage.py migrate corporations`
 8. `manage.py migrate person`
+9. Download [Blueprint](http://blueprintcss.org/) and install it into static/css if you care how things look.
 
 Loading Data
 =================

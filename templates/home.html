@@ -1,17 +1,28 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+{% block script %}
+<script src="{% static "js/geokbd.js" %}"></script>
+{% endblock %}
 {% block content %}
 <div id="corporation-search">
-<form action="{% url 'corporation-search' %}" method="get">{% csrf_token %}
+<form id="corp-search-form" action="{% url 'corporation-search' %}" method="get">{% csrf_token %}
 <h2>Corporation search</h2>
     {{ corpsearch }}
     <input type="submit" value="Search">
+    <label for="geo_kbd_corp">{% trans "Georgian keyboard" %}</label>
+    <input type="checkbox" name="geo" id="geo_kbd_corp" checked="checked">
 </form>
+<script>GeoKBD.map('corp-search-form');</script>
 </div>
 <div id="people-search">
-<form action="{% url 'person-search' %}" method="get">{% csrf_token %}
+<form id="person-search-form" action="{% url 'person-search' %}" method="get">{% csrf_token %}
 <h2>Person search</h2>
     {{ personsearch }}
     <input type="submit" value="Search">
+    <label for="geo_kbd_pers">{% trans "Georgian keyboard" %}</label>
+    <input type="checkbox" name="geo" id="geo_kbd_pers" checked="checked">
 </form>
+<script>GeoKBD.map('person-search-form');</script>
 </div>
 {% endblock %}

@@ -8,6 +8,7 @@
 <script src="{% static "js/geokbd.js" %}"></script>
 {% endblock %}
 {% block content %}
+<div id="wrapper">
 <div id="corporation-search">
 <form id="corp-search-form" action="{% url 'corporation-search' %}" method="get">{% csrf_token %}
 <h2>Corporation search</h2>
@@ -27,5 +28,6 @@
     <input type="checkbox" name="geo" id="geo_kbd_pers" checked="checked">
 </form>
 <script>GeoKBD.map('person-search-form');</script>
+</div>
 </div>
 {% endblock %}

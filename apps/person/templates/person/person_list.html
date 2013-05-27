@@ -1,5 +1,6 @@
 {% extends 'person/base.html' %}
 {% load i18n %}
+{% load transliterate %}
 {% block perscontent %}
 <table>
 <thead>
@@ -12,8 +13,8 @@
 <tbody>
 {% for p in people %}
 <tr><td>{{ p.personal_code }}</td>
-    <td><a href="{{ p.get_absolute_url }}" title="View details">{{ p.name }}</a></td>
-    <td>{{ p.address }}</td>
+    <td><a href="{{ p.get_absolute_url }}" title="View details">{{ p.name|ka_translit:LANGUAGE_CODE }}</a></td>
+    <td>{{ p.address|ka_translit:LANGUAGE_CODE }}</td>
 </tr>
 {% endfor %}
 </tbody>

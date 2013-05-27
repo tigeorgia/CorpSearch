@@ -1,7 +1,8 @@
 {% load i18n %}
+{% load transliterate %}
 {% block perscontent %}
 <div id="person-profile">
-    <h2>{{ person.name }}</h2>
+    <h2>{{ person.name|ka_translit:LANGUAGE_CODE }}</h2>
     <table id="person-attributes">
         <tbody>
             {% comment %}
@@ -31,7 +32,7 @@
             </tr>
             <tr><td>{% trans 'Address' %}:</td>
                 <td>{% if person.address %}
-                    {{ person.address }}
+                    {{ person.address|ka_translit:LANGUAGE_CODE }}
                     {% else %}
                     {% trans "Unknown" %}
                     {% endif %}
@@ -47,7 +48,7 @@
             </tr>
             <tr><td>{% trans 'Nationality' %}:</td>
                 <td>{% if person.nationality %}
-                    {{ person.nationality }}
+                    {{ person.nationality|ka_translit:LANGUAGE_CODE }}
                     {% else %}
                     {% trans "Unknown" %}
                     {% endif %}
@@ -67,8 +68,8 @@
         <tbody>
             {% for a in person.affiliation_set.all %}
                 {% if a.role != "პარტნიორი" %}
-                <tr><td><a href="{{ a.corp.get_absolute_url }}" title="{% trans 'View detail' %}">{{ a.corp.name }}</a></td>
-                    <td>{{ a.role }}</td>
+                <tr><td><a href="{{ a.corp.get_absolute_url }}" title="{% trans 'View detail' %}">{{ a.corp.name|ka_translit:LANGUAGE_CODE }}</a></td>
+                    <td>{{ a.role|ka_translit:LANGUAGE_CODE }}</td>
                     <td><a href="{{a.cite_link}}" title="{% trans 'View documentation' %}">{% trans 'Documentation' %}</a></td>
                 </tr>
                 {% endif %}
@@ -88,7 +89,7 @@
         <tbody>
             {% for a in person.affiliation_set.all %}
                 {% if a.role == "პარტნიორი" %}
-                <tr><td><a href="{{ a.corp.get_absolute_url }}" title="{% trans 'View detail' %}">{{ a.corp.name }}</a></td>
+                <tr><td><a href="{{ a.corp.get_absolute_url }}" title="{% trans 'View detail' %}">{{ a.corp.name|ka_translit:LANGUAGE_CODE }}</a></td>
                     <td>{{ a.share }}</td>
                     <td><a href="{{a.cite_link}}" title="{% trans 'View documentation' %}">{% trans 'Documentation' %}</a></td>
                 </tr>

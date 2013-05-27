@@ -1,4 +1,5 @@
 from django.conf.urls import *
+from django.conf.urls.i18n import i18n_patterns
 import views
 
 # Uncomment the next two lines to enable the admin:
@@ -13,10 +14,11 @@ v1_api = Api(api_name='v1')
 v1_api.register(CorporationResource())
 v1_api.register(PersonResource())
 
-urlpatterns = patterns('',
+urlpatterns = i18n_patterns('',
     # Example:
     # (r'^website/', include('website.foo.urls')),
     (r'^$', views.home),
+    (r'^i18n/', include('django.conf.urls.i18n')),
     (r'^corporations/', include('apps.corporations.urls')),
     (r'^people/', include('apps.person.urls')),
 

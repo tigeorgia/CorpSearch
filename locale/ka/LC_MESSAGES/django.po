@@ -1,0 +1,175 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-27 06:38-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps/corporations/templates/corporations/corporation_list.html:7
+msgid "ID Code"
+msgstr ""
+
+#: apps/corporations/templates/corporations/corporation_list.html:8
+msgid "Company Name"
+msgstr ""
+
+#: apps/corporations/templates/corporations/corporation_list.html:9
+#: apps/corporations/templates/corporations/detail.html:25
+#: apps/person/templates/person/person_detail.html:34
+#: apps/person/templates/person/person_list.html:9
+msgid "Address"
+msgstr ""
+
+#: apps/corporations/templates/corporations/corporation_list.html:10
+msgid "Registry link"
+msgstr ""
+
+#: apps/corporations/templates/corporations/corporation_list.html:19
+msgid "View on registry"
+msgstr ""
+
+#: apps/corporations/templates/corporations/corporation_list.html:26
+#: apps/person/templates/person/person_list.html:24
+msgid "Download for Excel"
+msgstr ""
+
+#: apps/corporations/templates/corporations/detail.html:8
+#: apps/person/templates/person/person_list.html:8
+msgid "Name"
+msgstr ""
+
+#: apps/corporations/templates/corporations/detail.html:11
+msgid "ID code"
+msgstr ""
+
+#: apps/corporations/templates/corporations/detail.html:14
+msgid "Personal code"
+msgstr ""
+
+#: apps/corporations/templates/corporations/detail.html:17
+msgid "State registration code"
+msgstr ""
+
+#: apps/corporations/templates/corporations/detail.html:20
+msgid "Registration date"
+msgstr ""
+
+#: apps/corporations/templates/corporations/detail.html:22
+msgid "View details from the Public Registry database"
+msgstr ""
+
+#: apps/corporations/templates/corporations/detail.html:22
+msgid "Public registry page"
+msgstr ""
+
+#: apps/corporations/templates/corporations/detail.html:28
+msgid "Email"
+msgstr ""
+
+#: apps/corporations/templates/corporations/detail.html:37
+msgid "Person"
+msgstr ""
+
+#: apps/corporations/templates/corporations/detail.html:38
+#: apps/person/templates/person/person_detail.html:65
+msgid "Role"
+msgstr ""
+
+#: apps/corporations/templates/corporations/detail.html:39
+#: apps/corporations/templates/corporations/detail.html:46
+#: apps/person/templates/person/person_detail.html:66
+#: apps/person/templates/person/person_detail.html:74
+#: apps/person/templates/person/person_detail.html:87
+#: apps/person/templates/person/person_detail.html:95
+msgid "Documentation"
+msgstr ""
+
+#: apps/corporations/templates/corporations/detail.html:44
+msgid "View profile"
+msgstr ""
+
+#: apps/corporations/templates/corporations/detail.html:46
+#: apps/person/templates/person/person_detail.html:74
+#: apps/person/templates/person/person_detail.html:95
+msgid "View documentation"
+msgstr ""
+
+#: apps/person/templates/person/person_detail.html:26
+msgid "Personal number"
+msgstr ""
+
+#: apps/person/templates/person/person_detail.html:30
+#: apps/person/templates/person/person_detail.html:38
+#: apps/person/templates/person/person_detail.html:46
+#: apps/person/templates/person/person_detail.html:54
+msgid "Unknown"
+msgstr ""
+
+#: apps/person/templates/person/person_detail.html:42
+msgid "Date of birth"
+msgstr ""
+
+#: apps/person/templates/person/person_detail.html:50
+msgid "Nationality"
+msgstr ""
+
+#: apps/person/templates/person/person_detail.html:61
+msgid "Listed affiliations"
+msgstr ""
+
+#: apps/person/templates/person/person_detail.html:64
+#: apps/person/templates/person/person_detail.html:85
+msgid "Company"
+msgstr ""
+
+#: apps/person/templates/person/person_detail.html:72
+#: apps/person/templates/person/person_detail.html:93
+msgid "View detail"
+msgstr ""
+
+#: apps/person/templates/person/person_detail.html:82
+msgid "Listed ownership interests"
+msgstr ""
+
+#: apps/person/templates/person/person_detail.html:86
+msgid "Share"
+msgstr ""
+
+#: apps/person/templates/person/person_list.html:7
+msgid "Personal Number"
+msgstr ""
+
+#: templates/base.html:7
+msgid "Corporations search tool -- TI Georgia"
+msgstr ""
+
+#: templates/base.html:11
+msgid ""
+"Note: You are viewing this site in a language other than Georgian. Georgian "
+"letters have been converted for your convenience."
+msgstr ""
+
+#: templates/paginate.html:4
+msgid "Previous page"
+msgstr ""
+
+#: templates/paginate.html:6
+msgid "Page"
+msgstr ""
+
+#: templates/paginate.html:9
+msgid "Next page"
+msgstr ""

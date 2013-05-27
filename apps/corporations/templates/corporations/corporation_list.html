@@ -1,5 +1,6 @@
 {% extends 'corporations/base.html' %}
 {% load i18n %}
+{% load transliterate %}
 {% block corpcontent %}
 <table>
 <thead>
@@ -13,8 +14,8 @@
 <tbody>
 {% for c in corporations %}
 <tr><td>{{ c.id_code }}</td>
-    <td><a href="{{ c.get_absolute_url }}" title="View corporation details">{{ c.name }}</a></td>
-    <td>{{ c.get_latest_extract.address }}</td>
+    <td><a href="{{ c.get_absolute_url }}" title="View corporation details">{{ c.name|ka_translit:LANGUAGE_CODE }}</a></td>
+    <td>{{ c.get_latest_extract.address|ka_translit:LANGUAGE_CODE }}</td>
     <td><a href="{{c.registry_url}}" title="View on public registry" target="_blank">{% trans 'View on registry' %}</a></td>
 </tr>
 {% endfor %}

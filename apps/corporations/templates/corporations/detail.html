@@ -1,11 +1,12 @@
 {% extends 'corporations/base.html' %}
 {% load i18n %}
+{% load transliterate %}
 {% block corpcontent %}
 <div id="corporation-profile">
     <table id="corporation-attributes">
         <tbody>
             <tr><td>{% trans 'Name' %}:</td>
-                <td>{{ corporation.name }}</td>
+                <td>{{ corporation.name|ka_translit:LANGUAGE_CODE }}</td>
             </tr>
             <tr><td>{% trans 'ID code' %}:</td>
                 <td>{{ corporation.id_code }}</td>
@@ -22,7 +23,7 @@
                 <td></td>
             </tr>
             <tr><td>{% trans 'Address' %}:</td>
-                <td>{{ corporation.get_latest_extract.address }}</td>
+                <td>{{ corporation.get_latest_extract.address|ka_translit:LANGUAGE_CODE }}</td>
             </tr>
             <tr><td>{% trans 'Email' %}:</td>
                 <td>{{ corporation.get_latest_extract.email }}</td>
@@ -40,8 +41,8 @@
         </thead>
         <tbody>
             {% for a in corporation.affiliation_set.all %}
-                <tr><td><a href="{{ a.person.get_absolute_url }}" title="{% trans 'View profile' %}">{{ a.person.name }}</a></td>
-                    <td>{{ a.role }}</td>
+                <tr><td><a href="{{ a.person.get_absolute_url }}" title="{% trans 'View profile' %}">{{ a.person.name|ka_translit:LANGUAGE_CODE }}</a></td>
+                    <td>{{ a.role|ka_translit:LANGUAGE_CODE }}</td>
                     <td><a href="{{a.cite_link}}" title="{% trans 'View documentation' %}">{% trans 'Documentation' %}</a></td>
                 </tr>
             {% endfor %}

@@ -11,7 +11,7 @@
 <div id="wrapper">
 <div id="corporation-search">
 <form id="corp-search-form" action="{% url 'corporation-search' %}" method="get">{% csrf_token %}
-<h2>Corporation search</h2>
+<h2>{% trans "Search registered corporations" %}</h2>
     {{ corpsearch.as_p }}
     <input type="submit" value="Search">
     <label for="geo_kbd_corp">{% trans "Georgian keyboard" %}</label>
@@ -21,7 +21,7 @@
 </div>
 <div id="person-search">
 <form id="person-search-form" action="{% url 'person-search' %}" method="get">{% csrf_token %}
-<h2>Person search</h2>
+<h2>{% trans "Search partners, directors, etc." %}</h2>
     {{ personsearch.as_p }}
     <input type="submit" value="Search">
     <label for="geo_kbd_pers">{% trans "Georgian keyboard" %}</label>

@@ -1,3 +1,4 @@
+fabfile.py
 *.swp
 static/css/blueprint
 data

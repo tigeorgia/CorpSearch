@@ -38,3 +38,11 @@ issue: `manage.py resetcorps` or `manage.py resetpeople`.
 
 The commands have been optimized to balance speed and memory usage; you
 shouldn't have a problem on most modern machines.
+
+Scripts
+===========
+There are some helpful utility scripts for updating the site (assuming you use
+PostgreSQL) in the scripts folder. They use the [Fabric](http://docs.fabfile.org/en/1.6/) library.
+You'll need to write your own fabfile.py importing the modules in scripts. That
+file is deliberately missing from this repository in order to avoid exposing
+server configuration details.

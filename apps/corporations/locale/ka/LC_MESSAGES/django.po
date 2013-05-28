@@ -3,14 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-05-27 15:39+0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2013-05-28 15:50+0400\n"
+"Last-Translator: Tornike Natroshvili <tornike@transparency.ge>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -20,77 +19,79 @@ msgstr ""
 
 #: templates/corporations/corporation_list.html:7
 msgid "ID Code"
-msgstr ""
+msgstr "საიდენტიფიკაციო კოდი"
 
 #: templates/corporations/corporation_list.html:8
 msgid "Company Name"
-msgstr ""
+msgstr "კომპანიის დასახელება"
 
 #: templates/corporations/corporation_list.html:9
 #: templates/corporations/detail.html:25
 msgid "Address"
-msgstr ""
+msgstr "მისამართი"
 
 #: templates/corporations/corporation_list.html:10
 msgid "Registry link"
-msgstr ""
+msgstr "რეგისტრაციის ლინკი"
 
 #: templates/corporations/corporation_list.html:19
 msgid "View on registry"
-msgstr ""
+msgstr "იხილეთ რეესტრი"
 
 #: templates/corporations/corporation_list.html:26
 msgid "Download for Excel"
-msgstr ""
+msgstr "ჩამოტვირთეთ Excel-ისთვის"
 
 #: templates/corporations/detail.html:8
 msgid "Name"
-msgstr ""
+msgstr "დასახელება"
 
 #: templates/corporations/detail.html:11
 msgid "ID code"
-msgstr ""
+msgstr "საიდენტიფიკაციო კოდი"
 
 #: templates/corporations/detail.html:14
 msgid "Personal code"
-msgstr ""
+msgstr "პირადი ნომერი"
 
 #: templates/corporations/detail.html:17
 msgid "State registration code"
-msgstr ""
+msgstr "სახელმწიფო რეგისტრაციის ნომერი"
 
 #: templates/corporations/detail.html:20
 msgid "Registration date"
-msgstr ""
+msgstr "რეგისტრაციის თარიღი"
 
 #: templates/corporations/detail.html:22
 msgid "View details from the Public Registry database"
-msgstr ""
+msgstr "იხილეთ დეტალურად საჯარო რეესტრის მონაცემთა ბაზაში"
 
 #: templates/corporations/detail.html:22
 msgid "Public registry page"
-msgstr ""
+msgstr "საჯარო რეესტრის გვერდი"
 
 #: templates/corporations/detail.html:28
 msgid "Email"
-msgstr ""
+msgstr "ელ. ფოსტა"
 
 #: templates/corporations/detail.html:37
 msgid "Person"
-msgstr ""
+msgstr "პირი"
 
 #: templates/corporations/detail.html:38
 msgid "Role"
-msgstr ""
+msgstr "მონაწილეობა"
 
-#: templates/corporations/detail.html:39 templates/corporations/detail.html:46
+#: templates/corporations/detail.html:39
+#: templates/corporations/detail.html:46
 msgid "Documentation"
-msgstr ""
+msgstr "დოკუმენტაცია"
 
 #: templates/corporations/detail.html:44
 msgid "View profile"
-msgstr ""
+msgstr "იხილეთ პროფილი"
 
 #: templates/corporations/detail.html:46
 msgid "View documentation"
-msgstr ""
+msgstr "იხილეთ დოკუმენტაცია"
+

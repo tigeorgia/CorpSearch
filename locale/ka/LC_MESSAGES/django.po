@@ -3,14 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-05-27 06:38-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2013-05-28 15:50+0400\n"
+"Last-Translator: Tornike Natroshvili <tornike@transparency.ge>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -20,73 +19,73 @@ msgstr ""
 
 #: apps/corporations/templates/corporations/corporation_list.html:7
 msgid "ID Code"
-msgstr ""
+msgstr "საიდენტიფიკაციო კოდი"
 
 #: apps/corporations/templates/corporations/corporation_list.html:8
 msgid "Company Name"
-msgstr ""
+msgstr "კომპანიის დასახელება"
 
 #: apps/corporations/templates/corporations/corporation_list.html:9
 #: apps/corporations/templates/corporations/detail.html:25
 #: apps/person/templates/person/person_detail.html:34
 #: apps/person/templates/person/person_list.html:9
 msgid "Address"
-msgstr ""
+msgstr "მისამართი"
 
 #: apps/corporations/templates/corporations/corporation_list.html:10
 msgid "Registry link"
-msgstr ""
+msgstr "რეგისტრაციის ლინკი"
 
 #: apps/corporations/templates/corporations/corporation_list.html:19
 msgid "View on registry"
-msgstr ""
+msgstr "იხილეთ რეესტრი"
 
 #: apps/corporations/templates/corporations/corporation_list.html:26
 #: apps/person/templates/person/person_list.html:24
 msgid "Download for Excel"
-msgstr ""
+msgstr "ჩამოტვირთეთ Excel-ისთვის"
 
 #: apps/corporations/templates/corporations/detail.html:8
 #: apps/person/templates/person/person_list.html:8
 msgid "Name"
-msgstr ""
+msgstr "დასახელება"
 
 #: apps/corporations/templates/corporations/detail.html:11
 msgid "ID code"
-msgstr ""
+msgstr "საიდენტიფიკაციო კოდი"
 
 #: apps/corporations/templates/corporations/detail.html:14
 msgid "Personal code"
-msgstr ""
+msgstr "პირადი ნომერი"
 
 #: apps/corporations/templates/corporations/detail.html:17
 msgid "State registration code"
-msgstr ""
+msgstr "სახელმწიფო რეგისტრაციის ნომერი"
 
 #: apps/corporations/templates/corporations/detail.html:20
 msgid "Registration date"
-msgstr ""
+msgstr "რეგისტრაციის თარიღი"
 
 #: apps/corporations/templates/corporations/detail.html:22
 msgid "View details from the Public Registry database"
-msgstr ""
+msgstr "იხილეთ დეტალურად საჯარო რეესტრის მონაცემთა ბაზაში"
 
 #: apps/corporations/templates/corporations/detail.html:22
 msgid "Public registry page"
-msgstr ""
+msgstr "საჯარო რეესტრის გვერდი"
 
 #: apps/corporations/templates/corporations/detail.html:28
 msgid "Email"
-msgstr ""
+msgstr "ელ. ფოსტა"
 
 #: apps/corporations/templates/corporations/detail.html:37
 msgid "Person"
-msgstr ""
+msgstr "პირი"
 
 #: apps/corporations/templates/corporations/detail.html:38
 #: apps/person/templates/person/person_detail.html:65
 msgid "Role"
-msgstr ""
+msgstr "მონაწილეობა"
 
 #: apps/corporations/templates/corporations/detail.html:39
 #: apps/corporations/templates/corporations/detail.html:46
@@ -95,81 +94,80 @@ msgstr ""
 #: apps/person/templates/person/person_detail.html:87
 #: apps/person/templates/person/person_detail.html:95
 msgid "Documentation"
-msgstr ""
+msgstr "დოკუმენტაცია"
 
 #: apps/corporations/templates/corporations/detail.html:44
 msgid "View profile"
-msgstr ""
+msgstr "იხილეთ პროფილი"
 
 #: apps/corporations/templates/corporations/detail.html:46
 #: apps/person/templates/person/person_detail.html:74
 #: apps/person/templates/person/person_detail.html:95
 msgid "View documentation"
-msgstr ""
+msgstr "იხილეთ დოკუმენტაცია"
 
 #: apps/person/templates/person/person_detail.html:26
 msgid "Personal number"
-msgstr ""
+msgstr "პირადი ნომერი"
 
 #: apps/person/templates/person/person_detail.html:30
 #: apps/person/templates/person/person_detail.html:38
 #: apps/person/templates/person/person_detail.html:46
 #: apps/person/templates/person/person_detail.html:54
 msgid "Unknown"
-msgstr ""
+msgstr "უცნობია"
 
 #: apps/person/templates/person/person_detail.html:42
 msgid "Date of birth"
-msgstr ""
+msgstr "დაბადების თარიღი"
 
 #: apps/person/templates/person/person_detail.html:50
 msgid "Nationality"
-msgstr ""
+msgstr "ეროვნება"
 
 #: apps/person/templates/person/person_detail.html:61
 msgid "Listed affiliations"
-msgstr ""
+msgstr "მონაწილეობის ჩამონათვალი"
 
 #: apps/person/templates/person/person_detail.html:64
 #: apps/person/templates/person/person_detail.html:85
 msgid "Company"
-msgstr ""
+msgstr "კომპანია"
 
 #: apps/person/templates/person/person_detail.html:72
 #: apps/person/templates/person/person_detail.html:93
 msgid "View detail"
-msgstr ""
+msgstr "იხილეთ დეტალი"
 
 #: apps/person/templates/person/person_detail.html:82
 msgid "Listed ownership interests"
-msgstr ""
+msgstr "საკუთრების ინტერესების ჩამონათვალი"
 
 #: apps/person/templates/person/person_detail.html:86
 msgid "Share"
-msgstr ""
+msgstr "წილი"
 
 #: apps/person/templates/person/person_list.html:7
 msgid "Personal Number"
-msgstr ""
+msgstr "პირადი ნომერი"
 
 #: templates/base.html:7
 msgid "Corporations search tool -- TI Georgia"
-msgstr ""
+msgstr "კორპორაციების საძიებო ხელსაწყო- საერთაშორისო გამჭვირვალობა-საქართველო"
 
 #: templates/base.html:11
-msgid ""
-"Note: You are viewing this site in a language other than Georgian. Georgian "
-"letters have been converted for your convenience."
-msgstr ""
+msgid "Note: You are viewing this site in a language other than Georgian. Georgian letters have been converted for your convenience."
+msgstr "შენიშვნა: თქვენ ამ საიტს ხედავთ ენაზე, რომელიც არ არის ქართული. ქართული აღნიშვნები შეცვლილია შესაბამისად. "
 
 #: templates/paginate.html:4
 msgid "Previous page"
-msgstr ""
+msgstr "წინა გვერდი"
 
 #: templates/paginate.html:6
 msgid "Page"
-msgstr ""
+msgstr "გვერდი"
 
 #: templates/paginate.html:9
 msgid "Next page"
-msgstr ""
+msgstr "შემდეგი გვერდი"
+

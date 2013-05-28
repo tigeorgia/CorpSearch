@@ -29,7 +29,7 @@ class PersonSearchView(PersonListView):
         return qs.order_by('name')
 
 class PersonPagedTemplateSearchView(PersonSearchView, MultipleObjectTemplateResponseMixin):
-    paginate_by = 25
+    paginate_by = 100
 
 class PersonCsvSearchView(PersonSearchView, CsvResponseMixin):
     pass

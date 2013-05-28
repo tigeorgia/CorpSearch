@@ -32,7 +32,7 @@ class CorporationSearchView(CorporationListView):
         return qs.order_by('name')
 
 class CorporationPagedTemplateSearchView(CorporationSearchView, MultipleObjectTemplateResponseMixin):
-    paginate_by = 25
+    paginate_by = 100
 
 class CorporationCsvSearchView(CorporationSearchView, CsvResponseMixin):
     pass

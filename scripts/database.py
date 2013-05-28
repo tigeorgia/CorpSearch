@@ -25,11 +25,3 @@ def cleanup(dbfile="dump.sql"):
     """ Local cleanup. """
     local("rm {}".format(dbfile))
     local("rm {}.tar.gz".format(dbfile))
-
-def update_corp_db(password):
-    env.password = password
-    dumpdb("registry","registry")
-    compressdb()
-    uploaddb()
-    importdb("corp_search","corp_search")
-    cleanup()

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
 import codecs
+from datetime import datetime
 
 from django.db import transaction
 from django.core.exceptions import ObjectDoesNotExist
@@ -8,6 +9,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from apps.corporations.models import Corporation
 from apps.person.models import Person, Affiliation
 from apps.person.forms import PersonForm, AffiliationForm
+from apps.util.glt import month_ka2en
 @transaction.commit_on_success
 def load_people_from_affiliations(infile):
     """ Loads a set of Person-Corp relations, and creates Person objects from
@@ -28,7 +30,7 @@ def load_people_from_affiliations(infile):
             except ObjectDoesNotExist: #TODO: Merge person data
                 pers.save()
 
-def load_affiliations(infile):
+def load_affiliations(infile,dates):
     """ Creates affiliations from an array of JSON objects. Requires 
     corporation and person tables to be populated."""
     i = 0
@@ -74,6 +76,10 @@ def load_affiliations(infile):
         attrs["corp"] = corp.pk
         attrs["person"] = pers.pk
         try:
+            attrs["valid_date"] = dates[attrs["cite_link"]]
+        except KeyError:
+            pass
+        try:
             for role in obj['relation_type']:
                 attrs["role"] = role
                 if AffiliationForm(attrs).is_valid():
@@ -91,9 +97,30 @@ def load_affiliations(infile):
                 affil = Affiliation(**attrs)
                 affiliations.append(affil)
                 #affil.save()
+        #print("Date: {}".format(affil.valid_date))
     print("Finished; loading remainder...")
     Affiliation.objects.bulk_create(affiliations)
 
+def load_doc_dates(infile):
+    """ Returns a dict of URL: date pairs, which will be used to apply
+    dates to each recorded affiliation."""
+    dates = {} # Will store URL: date pairs
+    i = 0
+    for docstr in infile:
+        if i % 10000 == 0:
+            print i
+        i += 1
+        obj = json.loads(docstr)
+        try:
+            date_geo = obj["date"]
+            date_eng = month_ka2en(date_geo)
+            if date_eng != u"":
+                dates[obj["link"]] = datetime.strptime(date_eng,"%d %B %Y %H:%M")
+        except KeyError:
+            pass
+    return dates
+
+        
 def percent_to_float(string):
     return float(string.strip("% "))/100
 

@@ -16,6 +16,9 @@ class Person(models.Model):
     def get_absolute_url(self):
         return reverse('person-detail', args=[self.pk])
 
+    def affiliations_by_role_date(self):
+        return self.affiliation_set.all().order_by('role','-valid_date')
+
     def detail(self):
         """ A very rough calculation of how much detail we have on this
         particular instance."""
@@ -35,8 +38,7 @@ class Affiliation(models.Model):
     cite_type = models.CharField(max_length=100)
     cite_link = models.URLField()
 
-    start_date = models.DateField(blank=True,null=True)
-    end_date = models.DateField(blank=True,null=True)
-    is_ongoing = models.NullBooleanField() # Is the relationship ongoing?
+    # Date on which the affiliation is known to be valid
+    valid_date = models.DateField(blank=True,null=True)
 
     share = models.FloatField(blank=True,null=True)

@@ -6,6 +6,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from apps.corporations.models import Corporation
 from apps.corporations.forms import CorporationForm
+from apps.util.glt import month_ka2en
 import codecs
 from datetime import datetime
 
@@ -49,7 +50,7 @@ def parse_corp(corp_string):
 
     try:
         date_geo = obj["registration_date"]
-        date_eng = _substitute_date(date_geo)
+        date_eng = month_ka2en(date_geo)
         if date_eng != u"":
             date = datetime.strptime(date_eng,"%d %B %Y")
             obj["registration_date"] = date
@@ -60,24 +61,3 @@ def parse_corp(corp_string):
         return Corporation(**obj)
     else:
         return None
-
-def _substitute_date(string):
-    if string is None:
-        return ""
-    dates = [(u"January",u"იანვარი"),
-             (u"February",u"თებერვალი"),
-             (u"March",u"მარტი"),
-             (u"April",u"აპრილი"),
-             (u"May",u"მაისი"),
-             (u"June",u"ივნისი"),
-             (u"July",u"ივლისი"),
-             (u"August",u"აგვისტო"),
-             (u"September",u"სექტემბერი"),
-             (u"October",u"ოქტომბერი"),
-             (u"November",u"ნოემბერი"),
-             (u"December",u"დეკემბერი")]
-             
-    for sub in dates:
-        string = string.replace(sub[1],sub[0])
-
-    return string

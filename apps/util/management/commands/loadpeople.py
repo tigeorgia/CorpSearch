@@ -12,6 +12,7 @@ class Command(BaseCommand):
     help = "Reloads data from the 'data' directory."
 
     AFFILIATION_DATA = "PersonCorpRelation.json"
+    DATE_DATA = "StatementDocument.json"
     DATA_FOLDER = 'data'
 
     def handle(self, *args, **options):
@@ -22,6 +23,10 @@ class Command(BaseCommand):
         with codecs.open(os.path.join(settings.PROJECT_PATH,self.DATA_FOLDER,self.AFFILIATION_DATA), encoding="utf-8-sig") as affiliation_file:
             print("Loading people")
             people.load_people_from_affiliations(affiliation_file)
+        dates = None
+        with codecs.open(os.path.join(settings.PROJECT_PATH,self.DATA_FOLDER,self.DATE_DATA),encoding="utf-8-sig") as dates_file:
+            print("Loading statement dates")
+            dates = people.load_doc_dates(dates_file)
         with codecs.open(os.path.join(settings.PROJECT_PATH,self.DATA_FOLDER,self.AFFILIATION_DATA), encoding="utf-8-sig") as affiliation_file:
             print("Loading affiliations")
-            people.load_affiliations(affiliation_file)
+            people.load_affiliations(affiliation_file,dates)

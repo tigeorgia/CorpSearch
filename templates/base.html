@@ -27,8 +27,18 @@
 <body>
 {% include 'nav.html' %}
 {% if LANGUAGE_CODE != "ka" %}
-<div id="message">{% trans 'Note: You are viewing this site in a language other than Georgian. Georgian letters have been converted for your convenience.' %}
+<div id="message">
+		{% trans 'Note: You are viewing this site in a language other than Georgian. Georgian letters have been converted for your convenience.' %}
 </div>
+{% endif %}
+{% if lastUpdateDate.import_people_finish %}
+	<div id="lastupdate">
+			{% if LANGUAGE_CODE != "ka" %}
+				<strong>{% trans 'Last update: ' %} {{ lastUpdateDate.import_people_finish }} </strong>		
+			{% else %}
+				<strong>ბოლო განახლება: {{ lastUpdateDate.import_people_finish }} </strong>
+			{% endif %}
+	</div>
 {% endif %}
 
 {% block content %}

@@ -14,8 +14,10 @@
 
 {% if LANGUAGE_CODE != "ka" %}
 	<h2>Search registered corporations</h2>
+	<h4>{{ corpCount }} registered corporations available.</h4>
 {% else %}
 	<h2>რეგისტრირებული კორპორაციების ძებნა</h2>
+	<h4>ხელმისაწვდომია {{ corpCount }} დარეგისტრირებული კორპორაცია.</h4>
 {% endif %}
     {{ corpsearch.as_p }}
     <input type="submit" value="Search">
@@ -28,8 +30,10 @@
 <form id="person-search-form" action="{% url 'person-search' %}" method="get">{% csrf_token %}
 {% if LANGUAGE_CODE != "ka" %}
 	<h2>{% trans 'Search partners, directors, etc.' %}</h2>
+	<h4>{{ personCount }} people available.</h4>
 {% else %}
 	<h2>პარტნიორების, დირექტორების და ა.შ. ძიება</h2>
+	<h4>ხელმისაწვდომია {{ personCount }} ადამიანი</h4>
 {% endif %}
     {{ personsearch.as_p }}
     <input type="submit" value="Search">

@@ -18,6 +18,7 @@ urlpatterns = i18n_patterns('',
     # Example:
     # (r'^website/', include('website.foo.urls')),
     (r'^$', views.home),
+    (r'^about', views.about),
     (r'^i18n/', include('django.conf.urls.i18n')),
     (r'^corporations/', include('apps.corporations.urls')),
     (r'^people/', include('apps.person.urls')),

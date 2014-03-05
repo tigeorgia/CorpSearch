@@ -20,6 +20,16 @@
 	<h4>ხელმისაწვდომია {{ corpCount }} დარეგისტრირებული კორპორაცია.</h4>
 {% endif %}
     {{ corpsearch.as_p }}
+    <p>
+    	<label for="id_legalform">Legal form:</label>
+    	<select id="id_legalform" name="legal_form">
+    		<option value="0">(Not specified)</option>
+	    {% for obj in legalFormValues %}
+	    	<option value="{{ obj.id }}">{{ obj.name }}</option>
+	    {% endfor%}
+    </select>
+    </p>
+    
     <input type="submit" value="Search">
     <label for="geo_kbd_corp">{% trans 'Georgian keyboard' %}</label>
     <input type="checkbox" name="geo" id="geo_kbd_corp" checked="checked">

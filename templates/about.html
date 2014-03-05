@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+{% block css %}
+<link rel="stylesheet" href="{% static "css/home.css" %}" type="text/css" media="screen, projection">
+{% endblock %}
+{% block script %}
+<script src="{% static "js/geokbd.js" %}"></script>
+{% endblock %}
+{% block content %}
+<div id="wrapper">
+	The goal of Transparency International Georgia's Corporation Search website is to provide information about various information about Georgian corporations, 
+	and how they tied to different share holders.
+</div>
+{% endblock %}

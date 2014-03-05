@@ -34,6 +34,9 @@ class Corporation(models.Model):
 
     latest_extract = property(get_latest_extract)
     registry_url = property(_get_registry_url)
+        
+class LegalFormLookup(models.Model):
+    name = models.CharField(max_length=250,blank=True,null=True)
 
 class Extract(models.Model):
     """ Certain types of info about corporations are stored only
@@ -42,5 +45,11 @@ class Extract(models.Model):
     date = models.DateTimeField(blank=True,null=True)
     address = models.CharField(max_length=250,blank=True,null=True)
     email = models.CharField(max_length=250,blank=True,null=True)
+    legalform = models.ForeignKey(LegalFormLookup, blank=True, null=True)
     corp = models.ForeignKey('Corporation')
 
+
+
+
+    
+    

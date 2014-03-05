@@ -1,4 +1,6 @@
-from .models import Corporation
+# -*- coding: utf-8 -*-
+
+from .models import Corporation, LegalFormLookup
 from .forms import CorporationSearchForm
 from apps.util.views import CsvResponseMixin
 
@@ -19,16 +21,28 @@ class CorporationSearchView(CorporationListView):
         qs = super(CorporationSearchView, self).get_queryset()
 
         form = CorporationSearchForm(self.request.GET)
-        if form.is_valid():
-            if form.cleaned_data['id_code']:
-                qs = qs.filter(id_code=form.cleaned_data['id_code'])
-            if form.cleaned_data['address']:
-                qs = qs.filter(extract__address__icontains=form.cleaned_data['address']).distinct()
-            if form.cleaned_data['email']:
-                qs = qs.filter(extract__email__icontains=form.cleaned_data['email']).distinct()
-            if form.cleaned_data['name']:
-                qs = qs.filter(name__icontains=form.cleaned_data['name'])
-
+        print form
+        
+        chosenIdCode = self.request.GET['id_code']
+        if chosenIdCode:
+            qs = qs.filter(id_code=chosenIdCode)
+        
+        chosenAddress = self.request.GET['address']
+        if chosenAddress:
+            qs = qs.filter(extract__address__icontains=chosenAddress).distinct()
+        
+        chosenEmail = self.request.GET['email']     
+        if chosenEmail:
+            qs = qs.filter(extract__email__icontains=chosenEmail).distinct()
+        
+        chosenName = self.request.GET['name']
+        if chosenName:
+            qs = qs.filter(name__icontains=chosenName)
+            
+        chosenLegalFormId = self.request.GET['legal_form']
+        if chosenLegalFormId and int(chosenLegalFormId) > 0:
+            qs = qs.filter(extract__legalform__id=chosenLegalFormId)
+         
         return qs.order_by('name')
 
 class CorporationPagedTemplateSearchView(CorporationSearchView, MultipleObjectTemplateResponseMixin):

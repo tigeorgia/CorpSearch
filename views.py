@@ -1,5 +1,5 @@
 from apps.corporations.forms import CorporationSearchForm
-from apps.corporations.models import Corporation
+from apps.corporations.models import Corporation, LegalFormLookup
 from apps.person.models import Person
 from apps.util.models import ScraperStat
 from apps.person.forms import PersonSearchForm
@@ -14,10 +14,16 @@ def home(request):
     corpCount = Corporation.objects.all().count()
     personCount = Person.objects.all().count()
     
+    legalFormValues = LegalFormLookup.objects.all()
+    
     return render_to_response('home.html',
                               {'corpsearch': corpsearch,
                                'personsearch': personsearch,
                                'lastUpdateDate': last_scraping_update,
                                'corpCount': corpCount,
-                               'personCount': personCount},
+                               'personCount': personCount,
+                               'legalFormValues': legalFormValues},
                               context_instance=RequestContext(request),)
+
+def about(request):
+    return render_to_response('about.html',{},context_instance=RequestContext(request))

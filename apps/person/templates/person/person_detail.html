@@ -1,6 +1,7 @@
 {% extends 'person/base.html' %}
 {% load i18n %}
 {% load transliterate %}
+{% load person_tags %}
 {% block perscontent %}
 <div id="person-profile">
     <h2>{{ person.name|ka_translit:LANGUAGE_CODE }}</h2>
@@ -94,7 +95,7 @@
             {% for a in person.affiliations_by_role_date %}
                 {% if a.role == "პარტნიორი" %}
                 <tr><td><a href="{{ a.corp.get_absolute_url }}" title="{% trans 'View detail' %}">{{ a.corp.name|ka_translit:LANGUAGE_CODE }}</a></td>
-                    <td>{{ a.share }}</td>
+                    <td>{% percentage a.share %}</td>
                     <td>{{ a.valid_date }}</td>
                     <td><a href="{{a.cite_link}}" title="{% trans 'View documentation' %}">{% trans 'Documentation' %}</a></td>
                 </tr>

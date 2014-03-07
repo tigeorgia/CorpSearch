@@ -21,9 +21,9 @@
 {% endif %}
     {{ corpsearch.as_p }}
     <p>
-    	<label for="id_legalform">Legal form:</label>
+    	<label for="id_legalform">{% trans 'Legal form:' %}</label>
     	<select id="id_legalform" name="legal_form">
-    		<option value="0">(Not specified)</option>
+    		<option value="0">{% trans '(Not specified)' %}</option>
 	    {% for obj in legalFormValues %}
 	    	<option value="{{ obj.id }}">{{ obj.name }}</option>
 	    {% endfor%}

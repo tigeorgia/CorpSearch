@@ -21,7 +21,6 @@ class CorporationSearchView(CorporationListView):
         qs = super(CorporationSearchView, self).get_queryset()
 
         form = CorporationSearchForm(self.request.GET)
-        print form
         
         chosenIdCode = self.request.GET['id_code']
         if chosenIdCode:
@@ -42,6 +41,14 @@ class CorporationSearchView(CorporationListView):
         chosenLegalFormId = self.request.GET['legal_form']
         if chosenLegalFormId and int(chosenLegalFormId) > 0:
             qs = qs.filter(extract__legalform__id=chosenLegalFormId)
+        
+        companiesRegisteredAfter = self.request.GET['companies_registered_after_0']
+        if companiesRegisteredAfter:
+            qs = qs.filter(registration_date__gte=companiesRegisteredAfter)
+            
+        companiesRegisteredBefore = self.request.GET['companies_registered_before_0']
+        if companiesRegisteredBefore:
+            qs = qs.filter(registration_date__lte=companiesRegisteredBefore)
          
         return qs.order_by('name')
 

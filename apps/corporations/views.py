@@ -44,11 +44,19 @@ class CorporationSearchView(CorporationListView):
         
         companiesRegisteredAfter = self.request.GET['companies_registered_after_0']
         if companiesRegisteredAfter:
-            qs = qs.filter(registration_date__gte=companiesRegisteredAfter)
+            if len(companiesRegisteredAfter) == 4:
+                companiesRegisteredAfter = companiesRegisteredAfter+"-01-01";
+            
+            if (len(companiesRegisteredAfter) == 10 or len(companiesRegisteredAfter) == 4):
+                qs = qs.filter(registration_date__gte=companiesRegisteredAfter)
             
         companiesRegisteredBefore = self.request.GET['companies_registered_before_0']
         if companiesRegisteredBefore:
-            qs = qs.filter(registration_date__lte=companiesRegisteredBefore)
+            if len(companiesRegisteredBefore) == 4:
+                companiesRegisteredBefore = companiesRegisteredBefore+"-01-01";
+            
+            if (len(companiesRegisteredBefore) == 10 or len(companiesRegisteredBefore) == 4):
+                qs = qs.filter(registration_date__lte=companiesRegisteredBefore)
          
         return qs.order_by('name')
 

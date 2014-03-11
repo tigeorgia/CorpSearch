@@ -16,40 +16,43 @@ class CorporationListView(BaseListView):
     model = Corporation
     context_object_name = 'corporations'
 
+
 class CorporationSearchView(CorporationListView):
     def get_queryset(self):
         qs = super(CorporationSearchView, self).get_queryset()
 
         form = CorporationSearchForm(self.request.GET)
-        print form
-        
+
         chosenIdCode = self.request.GET['id_code']
         if chosenIdCode:
             qs = qs.filter(id_code=chosenIdCode)
-        
+
         chosenAddress = self.request.GET['address']
         if chosenAddress:
             qs = qs.filter(extract__address__icontains=chosenAddress).distinct()
-        
-        chosenEmail = self.request.GET['email']     
+
+        chosenEmail = self.request.GET['email']
         if chosenEmail:
             qs = qs.filter(extract__email__icontains=chosenEmail).distinct()
-        
+
         chosenName = self.request.GET['name']
         if chosenName:
             qs = qs.filter(name__icontains=chosenName)
-            
+
         chosenLegalFormId = self.request.GET['legal_form']
         if chosenLegalFormId and int(chosenLegalFormId) > 0:
             qs = qs.filter(extract__legalform__id=chosenLegalFormId)
-         
+
         return qs.order_by('name')
+
 
 class CorporationPagedTemplateSearchView(CorporationSearchView, MultipleObjectTemplateResponseMixin):
     paginate_by = 100
 
+
 class CorporationCsvSearchView(CorporationSearchView, CsvResponseMixin):
     pass
+
 
 class CorporationDetailView(DetailView):
     model = Corporation

@@ -16,7 +16,7 @@
                 <h4>{{ corpCount }} registered corporations available.</h4>
             {% endblocktrans %}
 
-            <form id="corp-search-form" action="{% url 'corporation-search' %}" method="get">{% csrf_token %}
+            <form id="corp-search-form" action="{% url 'corporation-search' %}" method="get">
 
                 {{ corpsearch.as_p }}
 
@@ -27,7 +27,7 @@
             <script>GeoKBD.map('corp-search-form');</script>
         </div>
         <div id="person-search">
-            <form id="person-search-form" action="{% url 'person-search' %}" method="get">{% csrf_token %}
+            <form id="person-search-form" action="{% url 'person-search' %}" method="get">
                 {% blocktrans %}
                     <h2>Search partners, directors, etc</h2>
                     <h4>{{ personCount }} persons are available</h4>

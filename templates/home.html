@@ -2,55 +2,42 @@
 {% load staticfiles %}
 {% load i18n %}
 {% block css %}
-<link rel="stylesheet" href="{% static "css/home.css" %}" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="{% static "css/home.css" %}" type="text/css" media="screen, projection">
 {% endblock %}
 {% block script %}
-<script src="{% static "js/geokbd.js" %}"></script>
+    <script src="{% static "js/geokbd.js" %}"></script>
 {% endblock %}
 {% block content %}
-<div id="wrapper">
-<div id="corporation-search">
-<form id="corp-search-form" action="{% url 'corporation-search' %}" method="get">{% csrf_token %}
+    <div id="wrapper">
+        <div id="corporation-search">
 
-{% if LANGUAGE_CODE != "ka" %}
-	<h2>Search registered corporations</h2>
-	<h4>{{ corpCount }} registered corporations available.</h4>
-{% else %}
-	<h2>რეგისტრირებული კორპორაციების ძებნა</h2>
-	<h4>ხელმისაწვდომია {{ corpCount }} დარეგისტრირებული კორპორაცია.</h4>
-{% endif %}
-    {{ corpsearch.as_p }}
-    <p>
-    	<label for="id_legalform">Legal form:</label>
-    	<select id="id_legalform" name="legal_form">
-    		<option value="0">(Not specified)</option>
-	    {% for obj in legalFormValues %}
-	    	<option value="{{ obj.id }}">{{ obj.name }}</option>
-	    {% endfor%}
-    </select>
-    </p>
-    
-    <input type="submit" value="Search">
-    <label for="geo_kbd_corp">{% trans 'Georgian keyboard' %}</label>
-    <input type="checkbox" name="geo" id="geo_kbd_corp" checked="checked">
-</form>
-<script>GeoKBD.map('corp-search-form');</script>
-</div>
-<div id="person-search">
-<form id="person-search-form" action="{% url 'person-search' %}" method="get">{% csrf_token %}
-{% if LANGUAGE_CODE != "ka" %}
-	<h2>{% trans 'Search partners, directors, etc.' %}</h2>
-	<h4>{{ personCount }} people available.</h4>
-{% else %}
-	<h2>პარტნიორების, დირექტორების და ა.შ. ძიება</h2>
-	<h4>ხელმისაწვდომია {{ personCount }} ადამიანი</h4>
-{% endif %}
-    {{ personsearch.as_p }}
-    <input type="submit" value="Search">
-    <label for="geo_kbd_pers">{% trans 'Georgian keyboard' %}</label>
-    <input type="checkbox" name="geo" id="geo_kbd_pers" checked="checked">
-</form>
-<script>GeoKBD.map('person-search-form');</script>
-</div>
-</div>
+            {% blocktrans %}
+                <h2>Search registered corporations</h2>
+                <h4>{{ corpCount }} registered corporations available.</h4>
+            {% endblocktrans %}
+
+            <form id="corp-search-form" action="{% url 'corporation-search' %}" method="get">{% csrf_token %}
+
+                {{ corpsearch.as_p }}
+
+                <input type="submit" value="Search">
+                <label for="geo_kbd_corp">{% trans 'Georgian keyboard' %}</label>
+                <input type="checkbox" name="geo" id="geo_kbd_corp" checked="checked">
+            </form>
+            <script>GeoKBD.map('corp-search-form');</script>
+        </div>
+        <div id="person-search">
+            <form id="person-search-form" action="{% url 'person-search' %}" method="get">{% csrf_token %}
+                {% blocktrans %}
+                    <h2>Search partners, directors, etc</h2>
+                    <h4>{{ personCount }} persons are available</h4>
+                {% endblocktrans %}
+                {{ personsearch.as_p }}
+                <input type="submit" value="Search">
+                <label for="geo_kbd_pers">{% trans 'Georgian keyboard' %}</label>
+                <input type="checkbox" name="geo" id="geo_kbd_pers" checked="checked">
+            </form>
+            <script>GeoKBD.map('person-search-form');</script>
+        </div>
+    </div>
 {% endblock %}

@@ -16,11 +16,13 @@ class CorporationListView(BaseListView):
     model = Corporation
     context_object_name = 'corporations'
 
+
 class CorporationSearchView(CorporationListView):
     def get_queryset(self):
         qs = super(CorporationSearchView, self).get_queryset()
 
         form = CorporationSearchForm(self.request.GET)
+        print form
         
         chosenIdCode = self.request.GET['id_code']
         if chosenIdCode:
@@ -60,11 +62,14 @@ class CorporationSearchView(CorporationListView):
          
         return qs.order_by('name')
 
+
 class CorporationPagedTemplateSearchView(CorporationSearchView, MultipleObjectTemplateResponseMixin):
     paginate_by = 100
 
+
 class CorporationCsvSearchView(CorporationSearchView, CsvResponseMixin):
     pass
+
 
 class CorporationDetailView(DetailView):
     model = Corporation

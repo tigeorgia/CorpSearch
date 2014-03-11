@@ -19,7 +19,7 @@ class Corporation(models.Model):
     registration_date = models.DateField(blank=True, null=True)
 
     def get_absolute_url(self):
-        return reverse('corporation-detail', args=[self.pk])
+        return reverse('corporation-detail', args=[self.id_code])
 
     def _get_registry_url(self):
         return u"https://enreg.reestri.gov.ge/main.php?c=app&m=show_legal_person&legal_code_id={}".format(
@@ -60,7 +60,3 @@ class Extract(models.Model):
     def __unicode__(self):
         return self.corp
 
-
-
-    
-    

@@ -26,7 +26,14 @@ class PersonSearchView(PersonListView):
                 qs = qs.filter(address__icontains=form.cleaned_data['address'])
             if form.cleaned_data['nationality']:
                 qs = qs.filter(nationality__icontains=form.cleaned_data['nationality'])
-        return qs.order_by('name')
+        
+        order_by_value = self.request.GET.get('order_by')
+        if order_by_value:
+            return qs.order_by(order_by_value)
+        else:
+            return qs.order_by('name')
+        
+        
 
 class PersonPagedTemplateSearchView(PersonSearchView, MultipleObjectTemplateResponseMixin):
     paginate_by = 100

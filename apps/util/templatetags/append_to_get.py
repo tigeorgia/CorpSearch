@@ -30,7 +30,20 @@ class AppendGetNode(template.Node):
         get = context['request'].GET.copy()
 
         for key in self.dict_pairs:
-            get[key] = self.dict_pairs[key].resolve(context)
+            if (key == "order_by" and "order_by" in get):
+                # Specific url parameter handeling, for column sorting on people result page
+                value = self.dict_pairs[key].resolve(context)
+                if value == get[key]:
+                    if value.startswith("-"):
+                        result = value[1:len(get[key])]
+                    else:
+                        result = "-"+value
+                    get[key] = result
+                else:
+                    get[key] = self.dict_pairs[key].resolve(context)
+            else:
+                get[key] = self.dict_pairs[key].resolve(context)
+                
         
         path = context['request'].META['PATH_INFO']
         

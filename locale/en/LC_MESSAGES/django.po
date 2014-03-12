@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-11 04:44-0500\n"
+"POT-Creation-Date: 2014-03-12 17:53+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: apps/corporations/forms.py:10
+#: apps/corporations/forms.py:14
 #: apps/corporations/templates/corporations/detail.html:8
 #: apps/person/forms.py:6 apps/person/templates/person/person_list.html:8
 msgid "Name"
 msgstr ""
 
-#: apps/corporations/forms.py:11
+#: apps/corporations/forms.py:15
 #: apps/corporations/templates/corporations/detail.html:11
 msgid "ID code"
 msgstr ""
 
-#: apps/corporations/forms.py:12
+#: apps/corporations/forms.py:16
 #: apps/corporations/templates/corporations/corporation_list.html:9
 #: apps/corporations/templates/corporations/detail.html:25
 #: apps/person/forms.py:8 apps/person/templates/person/person_detail.html:36
@@ -36,13 +36,21 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: apps/corporations/forms.py:13
+#: apps/corporations/forms.py:17
 #: apps/corporations/templates/corporations/detail.html:28
 msgid "Email"
 msgstr ""
 
-#: apps/corporations/forms.py:14
+#: apps/corporations/forms.py:18
 msgid "Legal Form"
+msgstr ""
+
+#: apps/corporations/forms.py:21
+msgid "Companies registered after"
+msgstr ""
+
+#: apps/corporations/forms.py:23
+msgid "Companies registered before"
 msgstr ""
 
 #: apps/corporations/templates/corporations/corporation_list.html:7
@@ -165,18 +173,24 @@ msgstr ""
 msgid "Personal Number"
 msgstr ""
 
-#: templates/base.html:32
+#: templates/base.html:38
 msgid "Corporations search tool -- TI Georgia"
 msgstr ""
 
-#: templates/base.html:38
+#: templates/base.html:44
 msgid ""
 "Note: You are viewing this site in a language other than Georgian. Georgian "
 "letters have been converted for your convenience."
 msgstr ""
 
-#: templates/base.html:43
+#: templates/base.html:49
 msgid "Last update: "
+msgstr ""
+
+#: templates/base.html:57
+msgid ""
+"Data available on this website is scraped from <a href=\"https://enreg."
+"reestri.gov.ge/\">https://enreg.reestri.gov.ge/</a>"
 msgstr ""
 
 #: templates/home.html:14
@@ -188,15 +202,11 @@ msgid ""
 "            "
 msgstr ""
 
-#: templates/home.html:24 templates/home.html.py:40
+#: templates/home.html:24 templates/home.html.py:37
 msgid "Georgian keyboard"
 msgstr ""
 
 #: templates/home.html:31
-msgid "Search partners, directors, etc."
-msgstr ""
-
-#: templates/home.html:34
 #, python-format
 msgid ""
 "\n"

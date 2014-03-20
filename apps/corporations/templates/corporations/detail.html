@@ -1,5 +1,5 @@
 {% extends 'corporations/base.html' %}
-{% load i18n %}
+{% load i18n sekizai_tags  %}
 {% load transliterate %}
 {% block corpcontent %}
 <div id="corporation-profile">
@@ -51,4 +51,43 @@
         </tbody>
     </table>
 </div>
+
+{% if shares %}
+<div id="shares" style="text-align: center;margin:0 auto;display:block;">
+	<label id="chart-voted-label">{% trans 'Details about shareholders for this company' %}</label>
+	<div id="chart_div" style="margin: 0 auto; width: 320px; height: 320px;"></div>
+</div>
+{% endif %}
+
+{% addtoblock "js" %}
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      var unicodedData = {{ shares|safe }};
+      
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(unicodedData);
+
+        var options = {
+          title: 'Chart title!',
+          colors: ['green','red','black','grey'],
+          backgroundColor: 'transparent',
+          legend: {position: 'right'},
+          vAxis: {maxValue: 10},
+          chartArea: {left: 15, top:10, width: '100%'}
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        //google.visualization.events.addListener(chart, 'select', selectHandler);
+        chart.draw(data, options);
+      }
+	
+	/*function selectHandler() {
+	  window.location.href = '{{ url_votingrecords }}';
+	}*/
+</script>
+{% endaddtoblock %}
+
 {% endblock %}
+

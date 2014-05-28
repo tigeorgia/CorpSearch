@@ -27,27 +27,27 @@ class CorporationSearchView(CorporationListView):
 
         form = CorporationSearchForm(self.request.GET)
 
-        chosenIdCode = self.request.GET['id_code']
+        chosenIdCode = self.request.GET.get('id_code')
         if chosenIdCode:
             qs = qs.filter(id_code=chosenIdCode)
 
-        chosenAddress = self.request.GET['address']
+        chosenAddress = self.request.GET.get('address')
         if chosenAddress:
             qs = qs.filter(extract__address__icontains=chosenAddress).distinct()
 
-        chosenEmail = self.request.GET['email']
+        chosenEmail = self.request.GET.get('email')
         if chosenEmail:
             qs = qs.filter(extract__email__icontains=chosenEmail).distinct()
 
-        chosenName = self.request.GET['name']
+        chosenName = self.request.GET.get('name')
         if chosenName:
             qs = qs.filter(name__icontains=chosenName)
 
-        chosenLegalFormId = self.request.GET['legal_form']
+        chosenLegalFormId = self.request.GET.get('legal_form')
         if chosenLegalFormId and int(chosenLegalFormId) > 0:
             qs = qs.filter(extract__legalform__id=chosenLegalFormId)
 
-        companiesRegisteredAfter = self.request.GET['companies_registered_after_0']
+        companiesRegisteredAfter = self.request.GET.get('companies_registered_after_0')
         if companiesRegisteredAfter:
             if len(companiesRegisteredAfter) == 4:
                 companiesRegisteredAfter = companiesRegisteredAfter+"-01-01";
@@ -55,7 +55,7 @@ class CorporationSearchView(CorporationListView):
             if (len(companiesRegisteredAfter) == 10 or len(companiesRegisteredAfter) == 4):
                 qs = qs.filter(registration_date__gte=companiesRegisteredAfter)
 
-        companiesRegisteredBefore = self.request.GET['companies_registered_before_0']
+        companiesRegisteredBefore = self.request.GET.get('companies_registered_before_0')
         if companiesRegisteredBefore:
             if len(companiesRegisteredBefore) == 4:
                 companiesRegisteredBefore = companiesRegisteredBefore+"-01-01";
@@ -108,29 +108,34 @@ class CorporationDetailView(DetailView):
         context = super(CorporationDetailView, self).get_context_data(**kwargs)
         
         corpId = str(self.kwargs['id_code'])
-        mostRecentDate = context['corporation'].affiliation_set.exclude(valid_date__isnull=True).latest().valid_date
-        affiliationForShares = context['corporation'].affiliation_set.filter(valid_date__exact=mostRecentDate)
-        
-        totalShare = 0.0
-        for a in affiliationForShares:
-            if a.share:
-                totalShare = totalShare + a.share
-        
-        shares = []
-        if (totalShare == 1.0):
-            shares.append(['Name','Shares'])
+        try:
+            mostRecentDate = context['corporation'].affiliation.exclude(valid_date__isnull=True).latest().valid_date
+        except Affiliation.DoesNotExist:
+            mostRecentDate = None
+
+
+        if mostRecentDate:
+            affiliationForShares = context['corporation'].affiliation.filter(valid_date__exact=mostRecentDate)
+
+            totalShare = 0.0
             for a in affiliationForShares:
                 if a.share:
-                    thisShare = [a.person.name, a.share]
-                    shares.append(thisShare)
-            
-            
+                    totalShare = totalShare + a.share
 
-            shares = simplejson.dumps(shares)
-            context['shares'] = shares
+            shares = []
+            if (totalShare == 1.0):
+                shares.append(['Name','Shares'])
+                for a in affiliationForShares:
+                    if a.share:
+                        thisShare = [a.person.name, a.share]
+                        shares.append(thisShare)
+
+
+
+                shares = simplejson.dumps(shares)
+                context['shares'] = shares
         
                
         return context
-        
-        
-        
+
+

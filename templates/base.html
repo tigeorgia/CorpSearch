@@ -3,15 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="{% static "css/blueprint/screen.css" %}" type="text/css" media="screen, projection">
-    <link rel="stylesheet" href="{% static "css/blueprint/print.css" %}" type="text/css" media="print">
+<link rel="stylesheet" href="{% static "css/blueprint/screen.css" %}" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="{% static "css/blueprint/print.css" %}" type="text/css" media="print">
 
-    <link rel="stylesheet" type="text/css" href="{% static "css/jquery-ui-1.10.4.custom.min.css" %}" media="all"/>
-    <script type="text/javascript" src="{% static "js/jquery-1.10.2.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/jquery-ui-1.10.4.custom.min.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/jqsplitdatetime.js" %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static "css/jquery-ui-1.10.4.custom.min.css" %}" media="all" />
+<script type="text/javascript" src="{% static "js/jquery-1.10.2.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery-ui-1.10.4.custom.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jqsplitdatetime.js" %}"></script>
+{% render_block 'js' %}
 
-    <!--[if lt IE 8]>
+<!--[if lt IE 8]>
   <link rel="stylesheet" href="{% static "css/blueprint/ie.css" %}" type="text/css" media="screen, projection">
   <![endif]-->
     {% block css %}

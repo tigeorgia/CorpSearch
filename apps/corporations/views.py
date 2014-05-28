@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from .models import Corporation, LegalFormLookup
+from apps.person.models import Affiliation
 from .forms import CorporationSearchForm
 from apps.util.views import CsvResponseMixin
 
@@ -9,6 +10,7 @@ from django.views.generic.list import ListView, BaseListView, MultipleObjectTemp
 from django.views.generic.detail import DetailView
 from django.views.generic.base import TemplateView, RedirectView
 from django.shortcuts import get_object_or_404
+from django.utils import simplejson
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -24,7 +26,6 @@ class CorporationSearchView(CorporationListView):
         qs = super(CorporationSearchView, self).get_queryset()
 
         form = CorporationSearchForm(self.request.GET)
-        print form
 
         chosenIdCode = self.request.GET['id_code']
         if chosenIdCode:
@@ -102,3 +103,34 @@ class CorporationDetailView(DetailView):
         else:
             context = self.get_context_data(object=self.object)
             return self.render_to_response(context)
+    
+    def get_context_data(self, **kwargs):
+        context = super(CorporationDetailView, self).get_context_data(**kwargs)
+        
+        corpId = str(self.kwargs['id_code'])
+        mostRecentDate = context['corporation'].affiliation_set.exclude(valid_date__isnull=True).latest().valid_date
+        affiliationForShares = context['corporation'].affiliation_set.filter(valid_date__exact=mostRecentDate)
+        
+        totalShare = 0.0
+        for a in affiliationForShares:
+            if a.share:
+                totalShare = totalShare + a.share
+        
+        shares = []
+        if (totalShare == 1.0):
+            shares.append(['Name','Shares'])
+            for a in affiliationForShares:
+                if a.share:
+                    thisShare = [a.person.name, a.share]
+                    shares.append(thisShare)
+            
+            
+
+            shares = simplejson.dumps(shares)
+            context['shares'] = shares
+        
+               
+        return context
+        
+        
+        

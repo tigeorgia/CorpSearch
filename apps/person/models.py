@@ -42,3 +42,6 @@ class Affiliation(models.Model):
     valid_date = models.DateField(blank=True,null=True)
 
     share = models.FloatField(blank=True,null=True)
+    
+    class Meta:
+        get_latest_by = 'valid_date'

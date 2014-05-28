@@ -11,15 +11,20 @@ from .models import Corporation, Extract
 
 
 class CorporationSearchForm(forms.Form):
-    name = forms.CharField(max_length=250, required=False, label=_('Name'))
-    id_code = forms.CharField(max_length=50, required=False, label=_('ID code'))
-    address = forms.CharField(max_length=250, required=False, label=_('Address'))
-    email = forms.CharField(max_length=250, required=False, label=_('Email'))
-    legal_form = forms.ModelChoiceField(queryset=LegalFormLookup.objects.all(), required=False, label=_('Legal Form'))
+    name = forms.CharField(max_length=250, required=False, label=_('Company Name'),
+                           widget=forms.TextInput(attrs={'class': 'form-control'}))
+    id_code = forms.CharField(max_length=50, required=False, label=_('ID code'),
+                              widget=forms.TextInput(attrs={'class': 'form-control'}))
+    address = forms.CharField(max_length=250, required=False, label=_('Address'),
+                              widget=forms.TextInput(attrs={'class': 'form-control'}))
+    email = forms.CharField(max_length=250, required=False, label=_('Email'),
+                            widget=forms.TextInput(attrs={'class': 'form-control'}))
+    legal_form = forms.ModelChoiceField(queryset=LegalFormLookup.objects.all(), required=False, label=_('Legal Form'),
+                                        widget=forms.Select(attrs={'class': 'form-control'}))
 
-    companies_registered_after = JqSplitDateTimeField(widget=JqSplitDateTimeWidget(attrs={'date_class':'datepicker','time_class':'timepicker', 'placeholder':'yyyy or yyyy-mm-dd'}), 
+    companies_registered_after = JqSplitDateTimeField(widget=JqSplitDateTimeWidget(attrs={'date_class':'datepicker form-control','time_class':'timepicker', 'placeholder':'yyyy or yyyy-mm-dd'}),
                                                       label=_('Companies registered after'))
-    companies_registered_before = JqSplitDateTimeField(widget=JqSplitDateTimeWidget(attrs={'date_class':'datepicker','time_class':'timepicker', 'placeholder':'yyyy or yyyy-mm-dd'}), 
+    companies_registered_before = JqSplitDateTimeField(widget=JqSplitDateTimeWidget(attrs={'date_class':'datepicker form-control','time_class':'timepicker', 'placeholder':'yyyy or yyyy-mm-dd'}),
                                                        label=_('Companies registered before'))
 
 class CorporationForm(ModelForm):

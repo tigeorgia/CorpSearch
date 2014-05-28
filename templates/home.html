@@ -1,43 +1,68 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load i18n %}
-{% block css %}
-    <link rel="stylesheet" href="{% static "css/home.css" %}" type="text/css" media="screen, projection">
-{% endblock %}
 {% block script %}
     <script src="{% static "js/geokbd.js" %}"></script>
 {% endblock %}
 {% block content %}
-    <div id="wrapper">
-        <div id="corporation-search">
+    <div id="row">
+        <div class="col-md-6">
+            <div class="panel panel-primary" id="corporation-search">
+                <div class="panel-heading">
+                    <div class="panel-title"><h3>Search Corporations</h3></div>
+                </div>
+                <div class="panel-body">
+                    <div class="alert alert-info">
+                        {% blocktrans %}
+                            <strong>{{ corpCount }}</strong> registered corporations available.
+                        {% endblocktrans %}
+                    </div>
 
-            {% blocktrans %}
-                <h2>Search registered corporations</h2>
-                <h4>{{ corpCount }} registered corporations available.</h4>
-            {% endblocktrans %}
+                    <form role="form" id="corp-search-form" action="{% url 'corporation-search' %}" method="get">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="geo" id="geo_kbd_corp" checked="checked">
+                                {% trans 'Georgian keyboard' %}
+                            </label>
+                        </div>
 
-            <form id="corp-search-form" action="{% url 'corporation-search' %}" method="get">
+                        {{ corpsearch.as_p }}
 
-                {{ corpsearch.as_p }}
+                        <button class="btn btn-primary btn-block" type="submit">{% trans "Search" %}</button>
 
-                <input type="submit" value="Search">
-                <label for="geo_kbd_corp">{% trans 'Georgian keyboard' %}</label>
-                <input type="checkbox" name="geo" id="geo_kbd_corp" checked="checked">
-            </form>
-            <script>GeoKBD.map('corp-search-form');</script>
+                    </form>
+                    <script>GeoKBD.map('corp-search-form');</script>
+                </div>
+            </div>
         </div>
-        <div id="person-search">
-            <form id="person-search-form" action="{% url 'person-search' %}" method="get">
-                {% blocktrans %}
-                    <h2>Search partners, directors, etc</h2>
-                    <h4>{{ personCount }} persons are available</h4>
-                {% endblocktrans %}
-                {{ personsearch.as_p }}
-                <input type="submit" value="Search">
-                <label for="geo_kbd_pers">{% trans 'Georgian keyboard' %}</label>
-                <input type="checkbox" name="geo" id="geo_kbd_pers" checked="checked">
-            </form>
-            <script>GeoKBD.map('person-search-form');</script>
+        <div class="col-md-6" id="person-search">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <h3>{% trans "Search People" %}</h3>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="alert alert-info">
+                        {% blocktrans %}
+                            <strong>{{ personCount }}</strong> persons are available
+                        {% endblocktrans %}
+                    </div>
+
+                    <form role="form" id="person-search-form" action="{% url 'person-search' %}" method="get">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="geo" id="geo_kbd_corp" checked="checked">
+                                {% trans 'Georgian keyboard' %}
+                            </label>
+                        </div>
+                        {{ personsearch.as_p }}
+                        <button class="btn btn-primary btn-block" type="submit">{% trans "Search" %}</button>
+                    </form>
+                    <script>GeoKBD.map('person-search-form');</script>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
+

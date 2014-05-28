@@ -1,93 +1,114 @@
 {% extends 'corporations/base.html' %}
-{% load i18n sekizai_tags  %}
+{% load i18n sekizai_tags %}
 {% load transliterate %}
 {% block corpcontent %}
-<div id="corporation-profile">
-    <table id="corporation-attributes">
-        <tbody>
-            <tr><td>{% trans 'Name' %}:</td>
-                <td>{{ corporation.name|ka_translit:LANGUAGE_CODE }}</td>
-            </tr>
-            <tr><td>{% trans 'ID code' %}:</td>
-                <td>{{ corporation.id_code }}</td>
-            </tr>
-            <tr><td>{% trans 'Personal code' %}:</td>
-                <td>{{ corporation.personal_code }}</td>
-            </tr>
-            <tr><td>{% trans 'State registration code' %}:</td>
-                <td>{{ corporation.state_reg_code }}</td>
-            </tr>
-            <tr><td>{% trans 'Registration date' %}:</td>
-                <td>{{ corporation.registration_date }}</td>
-            <tr><td><a href="{{ corporation.registry_url }}" target="_blank" title="{% trans 'View details from the Public Registry database' %}">{% trans 'Public registry page' %}</a></td>
-                <td></td>
-            </tr>
-            <tr><td>{% trans 'Address' %}:</td>
-                <td>{{ corporation.get_latest_extract.address|ka_translit:LANGUAGE_CODE }}</td>
-            </tr>
-            <tr><td>{% trans 'Email' %}:</td>
-                <td>{{ corporation.get_latest_extract.email }}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<div id="affiliations">
-    <table id="affiliations-list">
-        <thead>
-            <tr><th>{% trans 'Person' %}</th>
-                <th>{% trans 'Role' %}</th>
-                <th>{% trans 'Date' %}</th>
-                <th>{% trans 'Documentation' %}</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for a in corporation.affiliations_by_role_date %}
-                <tr><td><a href="{{ a.person.get_absolute_url }}" title="{% trans 'View profile' %}">{{ a.person.name|ka_translit:LANGUAGE_CODE }}</a></td>
-                    <td>{{ a.role|ka_translit:LANGUAGE_CODE }}</td>
-                    <td>{{ a.valid_date }}</td>
-                    <td><a href="{{a.cite_link}}" title="{% trans 'View documentation' %}">{% trans 'Documentation' %}</a></td>
+    <div id="corporation-profile" class="row">
+        <div class="col-md-6">
+             <h2>{% trans "Company information" %}</h2>
+            <table id="corporation-attributes" class="table table-bordered table-striped">
+                <tbody>
+                <tr>
+                    <td><strong>{% trans 'Name' %}:</strong></td>
+                    <td>{{ corporation.name|ka_translit:LANGUAGE_CODE }}</td>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+                <tr>
+                    <td><strong>{% trans 'ID code' %}:</strong></td>
+                    <td>{{ corporation.id_code }}</td>
+                </tr>
+                <tr>
+                    <td><strong>{% trans 'Personal code' %}:</strong></td>
+                    <td>{{ corporation.personal_code }}</td>
+                </tr>
+                <tr>
+                    <td><strong>{% trans 'State registration code' %}:</strong></td>
+                    <td>{{ corporation.state_reg_code }}</td>
+                </tr>
+                <tr>
+                    <td><strong>{% trans 'Registration date' %}:</strong></td>
+                    <td>{{ corporation.registration_date }}</td>
+                <tr>
+                    <td><strong><a href="{{ corporation.registry_url }}" target="_blank"
+                           title="{% trans 'View details from the Public Registry database' %}">{% trans 'Public registry page' %}</a></strong>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><strong>{% trans 'Address' %}:</td>
+                    <td>{{ corporation.get_latest_extract.address|ka_translit:LANGUAGE_CODE }}</td>
+                </tr>
+                <tr>
+                    <td><strong>{% trans 'Email' %}:</strong></td>
+                    <td>{{ corporation.get_latest_extract.email }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <h2>{% trans "Company affiliations" %}</h2>
+    <div id="affiliations" class="row">
+        <div class="col-md-8">
+            <table id="affiliations-list" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>{% trans 'Person' %}</th>
+                    <th>{% trans 'Role' %}</th>
+                    <th>{% trans 'Date' %}</th>
+                    <th>{% trans 'Documentation' %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for a in corporation.affiliations_by_role_date %}
+                    <tr>
+                        <td><a href="{{ a.person.get_absolute_url }}"
+                               title="{% trans 'View profile' %}">{{ a.person.name|ka_translit:LANGUAGE_CODE }}</a></td>
+                        <td>{{ a.role|ka_translit:LANGUAGE_CODE }}</td>
+                        <td>{{ a.valid_date }}</td>
+                        <td><a href="{{ a.cite_link }}"
+                               title="{% trans 'View documentation' %}">{% trans 'Documentation' %}</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-{% if shares %}
-<div id="shares" style="text-align: center;margin:0 auto;display:block;">
-	<label id="chart-voted-label">{% trans 'Details about shareholders for this company' %}</label>
-	<div id="chart_div" style="margin: 0 auto; width: 320px; height: 320px;"></div>
-</div>
-{% endif %}
+    {% if shares %}
+        <div id="shares" style="text-align: center;margin:0 auto;display:block;">
+            <label id="chart-voted-label">{% trans 'Details about shareholders for this company' %}</label>
 
-{% addtoblock "js" %}
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      var unicodedData = {{ shares|safe }};
-      
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable(unicodedData);
+            <div id="chart_div" style="margin: 0 auto; width: 320px; height: 320px;"></div>
+        </div>
+    {% endif %}
 
-        var options = {
-          title: 'Chart title!',
-          colors: ['green','red','black','grey'],
-          backgroundColor: 'transparent',
-          legend: {position: 'right'},
-          vAxis: {maxValue: 10},
-          chartArea: {left: 15, top:10, width: '100%'}
-        };
+    {% addtoblock "js" %}
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+            google.load("visualization", "1", {packages: ["corechart"]});
+            google.setOnLoadCallback(drawChart);
+            var unicodedData = {{ shares|safe }};
 
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-        //google.visualization.events.addListener(chart, 'select', selectHandler);
-        chart.draw(data, options);
-      }
-	
-	/*function selectHandler() {
-	  window.location.href = '{{ url_votingrecords }}';
-	}*/
-</script>
-{% endaddtoblock %}
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable(unicodedData);
+
+                var options = {
+                    title: 'Chart title!',
+                    colors: ['green', 'red', 'black', 'grey'],
+                    backgroundColor: 'transparent',
+                    legend: {position: 'right'},
+                    vAxis: {maxValue: 10},
+                    chartArea: {left: 15, top: 10, width: '100%'}
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+                //google.visualization.events.addListener(chart, 'select', selectHandler);
+                chart.draw(data, options);
+            }
+
+            /*function selectHandler() {
+             window.location.href = '{{ url_votingrecords }}';
+             }*/
+        </script>
+    {% endaddtoblock %}
 
 {% endblock %}
 

@@ -3,105 +3,108 @@
 {% load transliterate %}
 {% load person_tags %}
 {% block perscontent %}
-<div id="person-profile">
-    <h2>{{ person.name|ka_translit:LANGUAGE_CODE }}</h2>
-    <table id="person-attributes">
-        <tbody>
-            {% comment %}
-            I'm pretty annoyed about the way this table is constructed
-            but I couldn't come up with anything better. The |default filter
-            is perfect for this situation, but the only way to make the result
-            of a filter translatable is to bind it to a translation blocktrans:
-            
-            <td>{% trans 'Personal number' %}:</td>
-            <td>
-            {% blocktrans with person.personal_code|default:"Unknown" as pc %}
-            {{ pc }}
-            {% endblocktrans %}
-            </td>
-
-            And I'm not even 100% certain that would work. Doing it this way
-            is an extra two lines per <td> but it's a lot easier to figure out
-            what's going on, imho.
-            {% endcomment %}
-            <tr><td>{% trans 'Personal number' %}:</td>
-                <td>{% if person.personal_code %}
-                    {{ person.personal_code }}
+    <div id="person-profile" class="row">
+        <div class="col-md-6">
+            <h2>{{ person.name|ka_translit:LANGUAGE_CODE }}</h2>
+            <table id="person-attributes" class="table table-striped table-bordered">
+                <tbody>
+                <tr>
+                    <td>{% trans 'Personal number' %}:</td>
+                    <td>{% if person.personal_code %}
+                        {{ person.personal_code }}
                     {% else %}
-                    {% trans "Unknown" %}
+                        {% trans "Unknown" %}
                     {% endif %}
-                </td>
-            </tr>
-            <tr><td>{% trans 'Address' %}:</td>
-                <td>{% if person.address %}
-                    {{ person.address|ka_translit:LANGUAGE_CODE }}
-                    {% else %}
-                    {% trans "Unknown" %}
-                    {% endif %}
-                </td>
-            </tr>
-            <tr><td>{% trans 'Date of birth' %}:</td>
-                <td>{% if person.dob%}
-                    {{ person.dob}}
-                    {% else %}
-                    {% trans "Unknown" %}
-                    {% endif %}
-                </td>
-            </tr>
-            <tr><td>{% trans 'Nationality' %}:</td>
-                <td>{% if person.nationality %}
-                    {{ person.nationality|ka_translit:LANGUAGE_CODE }}
-                    {% else %}
-                    {% trans "Unknown" %}
-                    {% endif %}
-                </td>
-        </tbody>
-    </table>
-</div>
-<div id="affiliations">
-    <h2>{% trans 'Listed affiliations' %}</h2>
-    <table id="affiliations-list">
-        <thead>
-            <tr><th>{% trans 'Company' %}</th>
-                <th>{% trans 'Role' %}</th>
-                <th>{% trans 'Date' %}</th>
-                <th>{% trans 'Documentation' %}</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for a in person.affiliation_set.all %}
-                {% if a.role != "პარტნიორი" %}
-                <tr><td><a href="{{ a.corp.get_absolute_url }}" title="{% trans 'View detail' %}">{{ a.corp.name|ka_translit:LANGUAGE_CODE }}</a></td>
-                    <td>{{ a.role|ka_translit:LANGUAGE_CODE }}</td>
-                    <td>{{ a.valid_date }}</td>
-                    <td><a href="{{a.cite_link}}" title="{% trans 'View documentation' %}">{% trans 'Documentation' %}</a></td>
+                    </td>
                 </tr>
-                {% endif %}
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-<div id="ownership">
-    <h2>{% trans 'Listed ownership interests' %}</h2>
-    <table id="ownership-list">
-        <thead>
-            <tr><th>{% trans 'Company' %}</th>
-                <th>{% trans 'Share' %}</th>
-                <th>{% trans 'Date' %}</th>
-                <th>{% trans 'Documentation' %}</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for a in person.affiliations_by_role_date %}
-                {% if a.role == "პარტნიორი" %}
-                <tr><td><a href="{{ a.corp.get_absolute_url }}" title="{% trans 'View detail' %}">{{ a.corp.name|ka_translit:LANGUAGE_CODE }}</a></td>
-                    <td>{% percentage a.share %}</td>
-                    <td>{{ a.valid_date }}</td>
-                    <td><a href="{{a.cite_link}}" title="{% trans 'View documentation' %}">{% trans 'Documentation' %}</a></td>
+                <tr>
+                    <td>{% trans 'Address' %}:</td>
+                    <td>{% if person.address %}
+                        {{ person.address|ka_translit:LANGUAGE_CODE }}
+                    {% else %}
+                        {% trans "Unknown" %}
+                    {% endif %}
+                    </td>
                 </tr>
-                {% endif %}
-            {% endfor %}
-        </tbody>
-    </table>
-<div>
+                <tr>
+                    <td>{% trans 'Date of birth' %}:</td>
+                    <td>{% if person.dob %}
+                        {{ person.dob }}
+                    {% else %}
+                        {% trans "Unknown" %}
+                    {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>{% trans 'Nationality' %}:</td>
+                    <td>{% if person.nationality %}
+                        {{ person.nationality|ka_translit:LANGUAGE_CODE }}
+                    {% else %}
+                        {% trans "Unknown" %}
+                    {% endif %}
+                    </td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="affiliations" class="row">
+        <div class="col-md-6">
+            <h2>{% trans 'Listed affiliations' %}</h2>
+            <table id="affiliations-list" class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>{% trans 'Company' %}</th>
+                    <th>{% trans 'Role' %}</th>
+                    <th>{% trans 'Date' %}</th>
+                    <th>{% trans 'Documentation' %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for a in person.affiliation_set.all %}
+                    {% if a.role != "პარტნიორი" %}
+                        <tr>
+                            <td><a href="{{ a.corp.get_absolute_url }}"
+                                   title="{% trans 'View detail' %}">{{ a.corp.name|ka_translit:LANGUAGE_CODE }}</a>
+                            </td>
+                            <td>{{ a.role|ka_translit:LANGUAGE_CODE }}</td>
+                            <td>{{ a.valid_date }}</td>
+                            <td><a href="{{ a.cite_link }}"
+                                   title="{% trans 'View documentation' %}">{% trans 'Documentation' %}</a></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="ownership" class="row">
+        <div class="col-md-6">
+            <h2>{% trans 'Listed ownership interests' %}</h2>
+            <table id="ownership-list" class="table table-bordered table-condensed">
+                <thead>
+                <tr>
+                    <th>{% trans 'Company' %}</th>
+                    <th>{% trans 'Share' %}</th>
+                    <th>{% trans 'Date' %}</th>
+                    <th>{% trans 'Documentation' %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for a in person.affiliations_by_role_date %}
+                    {% if a.role == "პარტნიორი" %}
+                        <tr>
+                            <td><a href="{{ a.corp.get_absolute_url }}"
+                                   title="{% trans 'View detail' %}">{{ a.corp.name|ka_translit:LANGUAGE_CODE }}</a>
+                            </td>
+                            <td>{% percentage a.share %}</td>
+                            <td>{{ a.valid_date }}</td>
+                            <td><a href="{{ a.cite_link }}"
+                                   title="{% trans 'View documentation' %}">{% trans 'Documentation' %}</a></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

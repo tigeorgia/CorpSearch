@@ -107,6 +107,7 @@ INSTALLED_APPS = (
     'apps.util',
     'apps.django_transliterate',
     'sekizai',
+    'debug_toolbar',
 )
 
 from local_settings import *

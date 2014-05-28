@@ -1,6 +1,7 @@
 import os, sys
 
 APPEND_SLASH = True
+PREPEND_WWW = False
 
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
@@ -52,9 +53,6 @@ STATIC_URL = '/static/'
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/media/'
-
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'GAGAGGT@^^I&8u9u4968749uy34878y0pierni9uoy508490'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (

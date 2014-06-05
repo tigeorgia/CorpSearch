@@ -109,13 +109,13 @@ class CorporationDetailView(DetailView):
         
         corpId = str(self.kwargs['id_code'])
         try:
-            mostRecentDate = context['corporation'].affiliation.exclude(valid_date__isnull=True).latest().valid_date
+            mostRecentDate = context['corporation'].affiliation_set.exclude(valid_date__isnull=True).latest().valid_date
         except Affiliation.DoesNotExist:
             mostRecentDate = None
 
 
         if mostRecentDate:
-            affiliationForShares = context['corporation'].affiliation.filter(valid_date__exact=mostRecentDate)
+            affiliationForShares = context['corporation'].affiliation_set.filter(valid_date__exact=mostRecentDate)
 
             totalShare = 0.0
             for a in affiliationForShares:

@@ -31,7 +31,7 @@ class Corporation(models.Model):
             return extracts.order_by('-date')[0]
 
     def affiliations_by_role_date(self):
-        return self.affiliation.all().order_by('role', '-valid_date')
+        return self.affiliation_set.all().order_by('role', '-valid_date')
 
     latest_extract = property(get_latest_extract)
     registry_url = property(_get_registry_url)

@@ -17,7 +17,7 @@ class Person(models.Model):
         return reverse('person-detail', args=[self.pk])
 
     def affiliations_by_role_date(self):
-        return self.affiliation.all().order_by('role','-valid_date')
+        return self.affiliation_set.all().order_by('role','-valid_date')
 
     def detail(self):
         """ A very rough calculation of how much detail we have on this
@@ -31,8 +31,8 @@ class Person(models.Model):
             total+=len(self.nationality)
 
 class Affiliation(models.Model):
-    person = models.ForeignKey(Person, related_name="affiliation")
-    corp = models.ForeignKey(Corporation, related_name="affiliation")
+    person = models.ForeignKey(Person)
+    corp = models.ForeignKey(Corporation)
     role = models.CharField(max_length=200,blank=True,null=True)
     
     cite_type = models.CharField(max_length=100)

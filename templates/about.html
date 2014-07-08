@@ -6,8 +6,17 @@
 {% endblock %}
 {% block content %}
     <div id="wrapper">
-        The goal of Transparency International Georgia's Corporation Search website is to provide information about
-        various information about Georgian corporations,
-        and how they tied to different share holders.
+    	{% if LANGUAGE_CODE != "ka" %}
+	        <p>Companyinfo.ge is a website created by Transparency International Georgia on the basis of the official Business Registry run by the National Agency of Public Registry (www.napr.gov.ge).</p>
+			<p>The website contains data on all Georgian companies starting from 2010. Users can easily view how company leadership and ownership has changed for the last several years and how shareholders and directors of different companies are linked through ownership or management.</p> 
+			<p>We run this website to further support transparency in company ownership in Georgia, so that the public can easily identify power networks and corporate relationships across the country and track down possible business interests of public officials. We think that Companyinfo.ge is a great research tool for journalists, civil society activists and any interested individual.</p>
+			<p>Note, that the data is scraped and should be addressed with caution. To better understand how to use Companyinfo, see <a href="http://www.youtube.com/watch?v=JUYIsCLF8AM" target="_blank">our short introductory video</a>.</p> 
+		{% else %}
+			<p><a href="www.companyinfo.ge">www.companyinfo.ge</a> „საერთაშორისო გამჭვირვალობა - საქართველოს” ვებსაიტია, რომელიც საჯარო რეესტრის ეროვნული სააგენტოს (<a href="www.napr.gov.ge">www.napr.gov.ge</a>) ბაზაზე შეიქმნა.</p>
+			<p>ვებსაიტი შეიცავს მონაცემებს საქართველოში რეგისტრირებულ კომპანიებზე, მათ დირექტორებსა და მფლობელებზე. მონაცემები 2010 წლიდან არის ხელმისაწვდომი. მომხმარებლებს საშუალება აქვთ იხილონ თუ როგორ იცვლებოდა ბოლო წლების განმავლობაში კომპანიების მმართველობა და მფლობელობა და როგორ უკავშირდებიან ერთმანეთს სხვადასხვა კომპანიების მესაკუთრეები და დირექტორები.</p> 
+			<p>ვებსაიტის მიზანია ხელი შეუწყოს კომპანიების მფლობელობის გამჭვირვალობის ზრდას. მოსახლეობას უნდა ჰქონდეს ინფორმაცია ქვეყანაში არსებულ გავლენიან ბიზნეს კავშირებსა და კორპორატიულ ქსელებზე, ასევე თანამდებობის პირების შესაძლო ბიზნეს ინტერესებზე.</p>
+			<p>companyinfo.ge კვლევის კარგი საშუალებაა ჟურნალისტებისთის, მკვლევარებისთვის და დაინტერესებული მოქალაქეებისთვის.</p>
+			<p>გაითვალისწინეთ, რომ აქ მოცემული ინფორმაცია სამეწარმეო რეესტრში უნდა გადაამოწმოთ. ასევე, <a href="http://www.youtube.com/watch?v=JUYIsCLF8AM" target="_blank">იხილეთ ჩვენი ვიდეო</a>, რომელშიც უფრო დეტალურადაა აღწერილი თუ როგორ უნდა გამოვიყენოთ companyinfo.ge.</p>		
+		{% endif %}
     </div>
 {% endblock %}

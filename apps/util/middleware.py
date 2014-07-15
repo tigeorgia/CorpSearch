@@ -8,15 +8,14 @@ class IpBanMiddleware(object):
                         'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED')
         self.ips = []
 
-    def check_ips(self):
+    def get_banned_user_or_none(self):
         for ip in self.ips:
             try:
                 banned_user = BannedUser.objects.get(ip=ip)
             except BannedUser.DoesNotExist:
                 banned_user = None
 
-            if banned_user and banned_user.is_banned:
-                return HttpResponseForbidden("403 Forbidden")
+            return banned_user
 
     def process_request(self, request):
         for header in self.headers:
@@ -26,5 +25,6 @@ class IpBanMiddleware(object):
                 else:
                     self.ips.extend(x for x in request.META[header])
 
-        self.check_ips()
-
+        banned_user = self.get_banned_user_or_none()
+        if banned_user and banned_user.is_banned:
+                return HttpResponseForbidden("403 Forbidden")

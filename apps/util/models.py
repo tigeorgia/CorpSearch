@@ -33,3 +33,6 @@ class BannedUser(models.Model):
             self.delete()
             return False
 
+    def __unicode__(self):
+        return self.ip
+

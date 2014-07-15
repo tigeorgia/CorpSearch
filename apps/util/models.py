@@ -19,6 +19,7 @@ class BannedUser(models.Model):
 
     ip = models.GenericIPAddressField("ip address", null=False, blank=False, unique=True)
     ban_time = models.DateTimeField(choices=TIME_CHOICES, null=False, blank=False)
+    tried_to_access = models.IntegerField(default=0)
 
     @property
     def is_banned(self):

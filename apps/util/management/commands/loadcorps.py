@@ -19,7 +19,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         
-        importCorpsStartDate = datetime.datetime.now()
+        #importCorpsStartDate = datetime.datetime.now()
         
         """ Loads corporations data from data files."""
         if settings.DEBUG == True:
@@ -32,8 +32,8 @@ class Command(BaseCommand):
             print("Loading extract data")
             extracts.load_extracts(extract_file)
             
-        importCorpsFinishDate = datetime.datetime.now()
+        #importCorpsFinishDate = datetime.datetime.now()
             
-        obj = ScraperStat(import_corps_start=importCorpsStartDate, import_corps_finish=importCorpsFinishDate)
-        obj.save()
+        #obj = ScraperStat(import_corps_start=importCorpsStartDate, import_corps_finish=importCorpsFinishDate)
+        #obj.save()
 

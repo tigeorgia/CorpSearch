@@ -8,13 +8,13 @@ class Corporation(models.Model):
     id_code = models.CharField(max_length=50, blank=True, null=True, db_index=True)
     # Corporations which are "individual entrepreneurs" may be known
     # by the personal ID code of the individual instead.
-    personal_code = models.CharField(max_length=50, blank=True, null=True)
+    personal_code = models.CharField(max_length=100, blank=True, null=True)
     # No idea what this means, but some corporations have them.
-    state_reg_code = models.CharField(max_length=50, blank=True, null=True)
+    state_reg_code = models.CharField(max_length=100, blank=True, null=True)
     # This is the primary key into the Public Registry's database.
-    registry_db_code = models.CharField(max_length=50)
+    registry_db_code = models.CharField(max_length=100)
 
-    name = models.CharField(max_length=250)
+    name = models.CharField(max_length=500)
 
     registration_date = models.DateField(blank=True, null=True)
 
@@ -52,10 +52,11 @@ class Extract(models.Model):
     in documents called Extracts. In order to figure out the most up-to-date
     address and email address, we need to use Extracts."""
     date = models.DateTimeField(blank=True, null=True)
-    address = models.CharField(max_length=250, blank=True, null=True)
+    address = models.TextField(blank=True, null=True)
     email = models.CharField(max_length=250, blank=True, null=True)
     legalform = models.ForeignKey(LegalFormLookup, blank=True, null=True)
     corp = models.ForeignKey('Corporation')
+    corpurl = models.CharField(max_length=250, blank=True, null=True)
 
     def __unicode__(self):
         return self.corp

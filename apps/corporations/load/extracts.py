@@ -33,8 +33,11 @@ def load_extracts(infile):
                  "corp_legalform": "legalform",
                  "corp_url": "corpurl"}
         obj = {remap[key]: val for key, val in obj.items()}
-        #obj.pop('corpurl',None)
-
+        
+        if ("corpurl" not in obj):
+            obj.pop('corpurl',None)
+        
+        legalform = None
         try:
             corp = Corporation.objects.get(id_code=obj['corp'])
         except (ObjectDoesNotExist, KeyError):

@@ -15,7 +15,7 @@ class CorporationSearchForm(forms.Form):
                            widget=forms.TextInput(attrs={'class': 'form-control'}))
     id_code = forms.CharField(max_length=50, required=False, label=_('ID code'),
                               widget=forms.TextInput(attrs={'class': 'form-control'}))
-    address = forms.CharField(max_length=250, required=False, label=_('Address'),
+    address = forms.CharField(max_length=1500, required=False, label=_('Address'),
                               widget=forms.TextInput(attrs={'class': 'form-control'}))
     email = forms.CharField(max_length=250, required=False, label=_('Email'),
                             widget=forms.TextInput(attrs={'class': 'form-control'}))

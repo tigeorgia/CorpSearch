@@ -6,7 +6,7 @@ from apps.corporations.models import Corporation
 class Person(models.Model):
     name = models.CharField(max_length=200,blank=True,null=True)
     personal_code = models.CharField(max_length=50,db_index=True)
-    address = models.CharField(max_length=200,blank=True,null=True)
+    address = models.TextField(blank=True, null=True)
 
     dob = models.DateField(blank=True,null=True)
     nationality = models.CharField(max_length=100,blank=True,null=True)

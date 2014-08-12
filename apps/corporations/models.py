@@ -14,7 +14,7 @@ class Corporation(models.Model):
     # This is the primary key into the Public Registry's database.
     registry_db_code = models.CharField(max_length=100)
 
-    name = models.CharField(max_length=500)
+    name = models.CharField(max_length=1000)
 
     registration_date = models.DateField(blank=True, null=True)
 

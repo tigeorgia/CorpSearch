@@ -53,10 +53,10 @@ class Extract(models.Model):
     address and email address, we need to use Extracts."""
     date = models.DateTimeField(blank=True, null=True)
     address = models.TextField(blank=True, null=True)
-    email = models.CharField(max_length=250, blank=True, null=True)
+    email = models.CharField(max_length=500, blank=True, null=True)
     legalform = models.ForeignKey(LegalFormLookup, blank=True, null=True)
     corp = models.ForeignKey('Corporation')
-    corpurl = models.CharField(max_length=250, blank=True, null=True)
+    corpurl = models.CharField(max_length=500, blank=True, null=True)
 
     def __unicode__(self):
         return self.corp

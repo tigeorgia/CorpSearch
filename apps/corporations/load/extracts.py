@@ -53,7 +53,8 @@ def load_extracts(infile):
                     legalform_name = u'სპს'
             try:
                 legalform = LegalFormLookup.objects.get(name=legalform_name)
-                obj['legalform'] = legalform
+                #obj['legalform'] = legalform
+                obj['legalform'] = None
             except (ObjectDoesNotExist, KeyError):
                 obj['legalform'] = None
         except (ObjectDoesNotExist, KeyError):

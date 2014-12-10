@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+{% block script %}
+    <script src="{% static "js/geokbd.js" %}"></script>
+{% endblock %}
+{% block content %}
+    <div id="wrapper">
+    	{% if LANGUAGE_CODE != "ka" %}
+	        <p>This is where I need to write some text</p> 
+	    {% else %}
+			<p>And in Georgian</p>
+		{% endif %}
+    </div>
+{% endblock %}

@@ -2,6 +2,15 @@
 {% load i18n %}
 {% load transliterate %}
 {% load person_tags %}
+
+<!-- when a person requests his/her data not to be indexed by search engines -->
+{% block noindex %}
+	{% if person.no_index_tag %}
+	<meta name="robots" content="noindex">
+	<meta name="googlebot" content="noindex">
+	{% endif %}
+{% endblock %}
+
 {% block perscontent %}
     <div id="person-profile" class="row">
         <div class="col-md-6">

@@ -7,23 +7,25 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 
 
-def home(request):
+def home( request ):
     corpsearch = CorporationSearchForm()
     personsearch = PersonSearchForm()
-    last_scraping_update = ScraperStat.objects.all().order_by('-import_people_finish')[0]
+    last_scraping_update = ScraperStat.objects.all().order_by( '-import_people_finish' )[0]
 
     corpCount = Corporation.objects.all().count()
     personCount = Person.objects.all().count()
 
-    return render_to_response('home.html',
+    return render_to_response( 'home.html',
                               {'corpsearch': corpsearch,
                                'personsearch': personsearch,
                                'lastUpdateDate': last_scraping_update,
                                'corpCount': corpCount,
                                'personCount': personCount},
-                              context_instance=RequestContext(request), )
+                              context_instance = RequestContext( request ), )
 
 
-def about(request):
-    return render_to_response('about.html', {}, context_instance=RequestContext(request))
+def about( request ):
+    return render_to_response( 'about.html', {}, context_instance = RequestContext( request ) )
 
+def privacy( request ):
+    return render_to_response( 'privacy.html', {}, context_instance = RequestContext( request ) )

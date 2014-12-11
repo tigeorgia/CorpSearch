@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-12 17:53+0400\n"
+"POT-Creation-Date: 2014-12-11 11:23+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,220 +17,86 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: apps/corporations/forms.py:14
-#: apps/corporations/templates/corporations/detail.html:8
-#: apps/person/forms.py:6 apps/person/templates/person/person_list.html:8
-msgid "Name"
-msgstr ""
-
-#: apps/corporations/forms.py:15
-#: apps/corporations/templates/corporations/detail.html:11
-msgid "ID code"
-msgstr ""
-
-#: apps/corporations/forms.py:16
-#: apps/corporations/templates/corporations/corporation_list.html:9
-#: apps/corporations/templates/corporations/detail.html:25
-#: apps/person/forms.py:8 apps/person/templates/person/person_detail.html:36
-#: apps/person/templates/person/person_list.html:9
-msgid "Address"
-msgstr ""
-
-#: apps/corporations/forms.py:17
-#: apps/corporations/templates/corporations/detail.html:28
-msgid "Email"
-msgstr ""
-
-#: apps/corporations/forms.py:18
-msgid "Legal Form"
-msgstr ""
-
-#: apps/corporations/forms.py:21
-msgid "Companies registered after"
-msgstr ""
-
-#: apps/corporations/forms.py:23
-msgid "Companies registered before"
-msgstr ""
-
-#: apps/corporations/templates/corporations/corporation_list.html:7
-msgid "ID Code"
-msgstr ""
-
-#: apps/corporations/templates/corporations/corporation_list.html:8
-msgid "Company Name"
-msgstr ""
-
-#: apps/corporations/templates/corporations/corporation_list.html:10
-msgid "Registry link"
-msgstr ""
-
-#: apps/corporations/templates/corporations/corporation_list.html:19
-msgid "View on registry"
-msgstr ""
-
-#: apps/corporations/templates/corporations/corporation_list.html:26
-#: apps/person/templates/person/person_list.html:24
-msgid "Download for Excel"
-msgstr ""
-
-#: apps/corporations/templates/corporations/detail.html:14
-msgid "Personal code"
-msgstr ""
-
-#: apps/corporations/templates/corporations/detail.html:17
-msgid "State registration code"
-msgstr ""
-
-#: apps/corporations/templates/corporations/detail.html:20
-msgid "Registration date"
-msgstr ""
-
-#: apps/corporations/templates/corporations/detail.html:22
-msgid "View details from the Public Registry database"
-msgstr ""
-
-#: apps/corporations/templates/corporations/detail.html:22
-msgid "Public registry page"
-msgstr ""
-
-#: apps/corporations/templates/corporations/detail.html:37
-msgid "Person"
-msgstr ""
-
-#: apps/corporations/templates/corporations/detail.html:38
-#: apps/person/templates/person/person_detail.html:67
-msgid "Role"
-msgstr ""
-
-#: apps/corporations/templates/corporations/detail.html:39
-#: apps/person/templates/person/person_detail.html:68
-#: apps/person/templates/person/person_detail.html:91
-msgid "Date"
-msgstr ""
-
-#: apps/corporations/templates/corporations/detail.html:40
-#: apps/corporations/templates/corporations/detail.html:48
-#: apps/person/templates/person/person_detail.html:69
-#: apps/person/templates/person/person_detail.html:78
-#: apps/person/templates/person/person_detail.html:92
-#: apps/person/templates/person/person_detail.html:101
-msgid "Documentation"
-msgstr ""
-
-#: apps/corporations/templates/corporations/detail.html:45
-msgid "View profile"
-msgstr ""
-
-#: apps/corporations/templates/corporations/detail.html:48
-#: apps/person/templates/person/person_detail.html:78
-#: apps/person/templates/person/person_detail.html:101
-msgid "View documentation"
-msgstr ""
-
-#: apps/person/forms.py:7 apps/person/templates/person/person_detail.html:28
-msgid "Personal number"
-msgstr ""
-
-#: apps/person/forms.py:9 apps/person/templates/person/person_detail.html:52
-msgid "Nationality"
-msgstr ""
-
-#: apps/person/templates/person/person_detail.html:32
-#: apps/person/templates/person/person_detail.html:40
-#: apps/person/templates/person/person_detail.html:48
-#: apps/person/templates/person/person_detail.html:56
-msgid "Unknown"
-msgstr ""
-
-#: apps/person/templates/person/person_detail.html:44
-msgid "Date of birth"
-msgstr ""
-
-#: apps/person/templates/person/person_detail.html:63
-msgid "Listed affiliations"
-msgstr ""
-
-#: apps/person/templates/person/person_detail.html:66
-#: apps/person/templates/person/person_detail.html:89
-msgid "Company"
-msgstr ""
-
-#: apps/person/templates/person/person_detail.html:75
-#: apps/person/templates/person/person_detail.html:98
-msgid "View detail"
-msgstr ""
-
-#: apps/person/templates/person/person_detail.html:86
-msgid "Listed ownership interests"
-msgstr ""
-
-#: apps/person/templates/person/person_detail.html:90
-msgid "Share"
-msgstr ""
-
-#: apps/person/templates/person/person_list.html:7
-msgid "Personal Number"
-msgstr ""
-
-#: templates/base.html:38
+#: templates/base.html:59
 msgid "Corporations search tool -- TI Georgia"
 msgstr ""
 
-#: templates/base.html:44
+#: templates/base.html:68
 msgid ""
 "Note: You are viewing this site in a language other than Georgian. Georgian "
 "letters have been converted for your convenience."
 msgstr ""
 
-#: templates/base.html:49
-msgid "Last update: "
-msgstr ""
-
-#: templates/base.html:57
+#: templates/footer.html:4
 msgid ""
 "Data available on this website is scraped from <a href=\"https://enreg."
 "reestri.gov.ge/\">https://enreg.reestri.gov.ge/</a>"
 msgstr ""
 
-#: templates/home.html:14
+#: templates/footer.html:5
+msgid ""
+"This website is maintained with financial support from  the Swedish "
+"International Development Cooperation Agency (Sida)."
+msgstr ""
+
+#: templates/home.html:16
 #, python-format
 msgid ""
 "\n"
-"                <h2>Search registered corporations</h2>\n"
-"                <h4>%(corpCount)s registered corporations available.</h4>\n"
-"            "
+"                            <strong>%(corpCount)s</strong> registered "
+"corporations available.\n"
+"                        "
 msgstr ""
 
-#: templates/home.html:24 templates/home.html.py:37
+#: templates/home.html:25 templates/home.html.py:56
 msgid "Georgian keyboard"
 msgstr ""
 
-#: templates/home.html:31
+#: templates/home.html:31 templates/home.html.py:60
+msgid "Search"
+msgstr ""
+
+#: templates/home.html:42
+msgid "Search People"
+msgstr ""
+
+#: templates/home.html:47
 #, python-format
 msgid ""
 "\n"
-"                    <h2>Search partners, directors, etc</h2>\n"
-"                    <h4>%(personCount)s persons are available</h4>\n"
-"                "
+"                            <strong>%(personCount)s</strong> persons are "
+"available\n"
+"                        "
 msgstr ""
 
-#: templates/nav.html:5
+#: templates/nav.html:9
+msgid "Menu"
+msgstr ""
+
+#: templates/nav.html:14
+msgid "CompanyInfo"
+msgstr ""
+
+#: templates/nav.html:19
 msgid "Home"
 msgstr ""
 
-#: templates/nav.html:6
+#: templates/nav.html:20
+msgid "Privacy"
+msgstr ""
+
+#: templates/nav.html:21
 msgid "About"
 msgstr ""
 
-#: templates/paginate.html:4
-msgid "Previous page"
+#: templates/nav.html:26
+msgid "Language"
 msgstr ""
 
 #: templates/paginate.html:6
-msgid "Page"
+msgid "Previous page"
 msgstr ""
 
-#: templates/paginate.html:9
+#: templates/paginate.html:13
 msgid "Next page"
 msgstr ""

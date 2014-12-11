@@ -8,7 +8,7 @@ from .models import Person
 
 class PersonAdmin( admin.ModelAdmin ):
     search_fields = ['name']
-    list_display = ( 'name', 'address', 'no_index_tag', 'id' )
+    list_display = ( 'name', 'address', 'no_index_tag', 'personal_code', 'id' )
     list_editable = ('no_index_tag',)
     fields = [ 'no_index_tag']    
         

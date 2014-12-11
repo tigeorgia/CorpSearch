@@ -10,7 +10,7 @@ from django.views.generic.list import ListView, BaseListView, MultipleObjectTemp
 from django.views.generic.detail import DetailView
 from django.views.generic.base import TemplateView, RedirectView
 from django.shortcuts import get_object_or_404
-from django.utils import simplejson
+import json as simplejson
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 

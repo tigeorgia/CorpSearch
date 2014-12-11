@@ -3,62 +3,60 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-11 11:23+0400\n"
-"PO-Revision-Date: 2013-05-28 15:50+0400\n"
-"Last-Translator: Tornike Natroshvili <tornike@transparency.ge>\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps/person/forms.py:6
-#, fuzzy
-#| msgid "Name"
 msgid "Full Name"
-msgstr "დასახელება"
+msgstr ""
 
 #: apps/person/forms.py:8 apps/person/templates/person/person_detail.html:21
 msgid "Personal number"
-msgstr "პირადი ნომერი"
+msgstr ""
 
 #: apps/person/forms.py:10 apps/person/templates/person/person_detail.html:30
 #: apps/person/templates/person/person_list.html:10
 msgid "Address"
-msgstr "მისამართი"
+msgstr ""
 
 #: apps/person/forms.py:12 apps/person/templates/person/person_detail.html:48
 msgid "Nationality"
-msgstr "ეროვნება"
+msgstr ""
 
 #: apps/person/templates/person/person_detail.html:25
 #: apps/person/templates/person/person_detail.html:34
 #: apps/person/templates/person/person_detail.html:43
 #: apps/person/templates/person/person_detail.html:52
 msgid "Unknown"
-msgstr "უცნობია"
+msgstr ""
 
 #: apps/person/templates/person/person_detail.html:39
 msgid "Date of birth"
-msgstr "დაბადების თარიღი"
+msgstr ""
 
 #: apps/person/templates/person/person_detail.html:61
 msgid "Listed affiliations"
-msgstr "მონაწილეობის ჩამონათვალი"
+msgstr ""
 
 #: apps/person/templates/person/person_detail.html:65
 #: apps/person/templates/person/person_detail.html:95
 msgid "Company"
-msgstr "კომპანია"
+msgstr ""
 
 #: apps/person/templates/person/person_detail.html:66
 msgid "Role"
-msgstr "მონაწილეობა"
+msgstr ""
 
 #: apps/person/templates/person/person_detail.html:67
 #: apps/person/templates/person/person_detail.html:97
@@ -70,34 +68,34 @@ msgstr ""
 #: apps/person/templates/person/person_detail.html:98
 #: apps/person/templates/person/person_detail.html:111
 msgid "Documentation"
-msgstr "დოკუმენტაცია"
+msgstr ""
 
 #: apps/person/templates/person/person_detail.html:76
 #: apps/person/templates/person/person_detail.html:106
 msgid "View detail"
-msgstr "იხილეთ დეტალი"
+msgstr ""
 
 #: apps/person/templates/person/person_detail.html:81
 #: apps/person/templates/person/person_detail.html:111
 msgid "View documentation"
-msgstr "იხილეთ დოკუმენტაცია"
+msgstr ""
 
 #: apps/person/templates/person/person_detail.html:91
 msgid "Listed ownership interests"
-msgstr "საკუთრების ინტერესების ჩამონათვალი"
+msgstr ""
 
 #: apps/person/templates/person/person_detail.html:96
 msgid "Share"
-msgstr "წილი"
+msgstr ""
 
 #: apps/person/templates/person/person_list.html:8
 msgid "Personal Number"
-msgstr "პირადი ნომერი"
+msgstr ""
 
 #: apps/person/templates/person/person_list.html:9
 msgid "Name"
-msgstr "დასახელება"
+msgstr ""
 
 #: apps/person/templates/person/person_list.html:28
 msgid "Download for Excel"
-msgstr "ჩამოტვირთეთ Excel-ისთვის"
+msgstr ""

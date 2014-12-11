@@ -14,10 +14,21 @@
         <tbody>
         {% for p in people %}
             <tr>
-                <td>{{ p.personal_code }}</td>
-                <td><a href="{{ p.get_absolute_url }}" title="View details">{{ p.name|ka_translit:LANGUAGE_CODE }}</a>
+                <td>
+                {% if p.personal_code %})
+                {{ p.personal_code }}
+                {% endif %}
                 </td>
-                <td>{{ p.address|ka_translit:LANGUAGE_CODE }}</td>
+                <td>
+                {% if p.name %}
+                <a href="{{ p.get_absolute_url }}" title="View details">{{ p.name|ka_translit:LANGUAGE_CODE }}</a>
+                {% endif %}
+                </td>
+                <td>
+                {% if p.address %}
+                {{ p.address|ka_translit:LANGUAGE_CODE }}
+                {% endif %}
+                </td>
             </tr>
         {% endfor %}
         </tbody>

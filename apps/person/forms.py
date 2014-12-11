@@ -12,10 +12,12 @@ class PersonSearchForm(forms.Form):
     nationality = forms.CharField(max_length=200,required=False,label=_("Nationality"),
                                   widget=forms.TextInput(attrs={'class': 'form-control'}))
 
-class PersonForm(forms.ModelForm):
-    class Meta:
-        model = Person
-
-class AffiliationForm(forms.ModelForm):
-    class Meta:
-        model = Affiliation
+# class PersonForm(forms.ModelForm):
+#     class Meta:
+#         model = Person
+#         fields = ['name', 'personal_code', 'address', 'dob', 'nationality', 'affiliations']
+# 
+# class AffiliationForm(forms.ModelForm):
+#     class Meta:
+#         model = Affiliation
+#         fields = ['person', 'corp', 'role', 'cite_type', 'cite_link', 'valid_date', 'share']

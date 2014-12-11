@@ -3,40 +3,40 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-11 11:23+0400\n"
-"PO-Revision-Date: 2013-05-28 15:50+0400\n"
-"Last-Translator: Tornike Natroshvili <tornike@transparency.ge>\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps/corporations/forms.py:14
 #: apps/corporations/templates/corporations/corporation_list.html:9
 msgid "Company Name"
-msgstr "კომპანიის დასახელება"
+msgstr ""
 
 #: apps/corporations/forms.py:16
 #: apps/corporations/templates/corporations/detail.html:15
 msgid "ID code"
-msgstr "საიდენტიფიკაციო კოდი"
+msgstr ""
 
 #: apps/corporations/forms.py:18
 #: apps/corporations/templates/corporations/corporation_list.html:10
 #: apps/corporations/templates/corporations/detail.html:36
 msgid "Address"
-msgstr "მისამართი"
+msgstr ""
 
 #: apps/corporations/forms.py:20
 #: apps/corporations/templates/corporations/detail.html:40
 msgid "Email"
-msgstr "ელ. ფოსტა"
+msgstr ""
 
 #: apps/corporations/forms.py:22
 msgid "Legal Form"
@@ -52,19 +52,19 @@ msgstr ""
 
 #: apps/corporations/templates/corporations/corporation_list.html:8
 msgid "ID Code"
-msgstr "საიდენტიფიკაციო კოდი"
+msgstr ""
 
 #: apps/corporations/templates/corporations/corporation_list.html:11
 msgid "Registry link"
-msgstr "რეგისტრაციის ლინკი"
+msgstr ""
 
 #: apps/corporations/templates/corporations/corporation_list.html:23
 msgid "View on registry"
-msgstr "იხილეთ რეესტრი"
+msgstr ""
 
 #: apps/corporations/templates/corporations/corporation_list.html:31
 msgid "Download for Excel"
-msgstr "ჩამოტვირთეთ Excel-ისთვის"
+msgstr ""
 
 #: apps/corporations/templates/corporations/detail.html:7
 msgid "Company information"
@@ -72,27 +72,27 @@ msgstr ""
 
 #: apps/corporations/templates/corporations/detail.html:11
 msgid "Name"
-msgstr "დასახელება"
+msgstr ""
 
 #: apps/corporations/templates/corporations/detail.html:19
 msgid "Personal code"
-msgstr "პირადი ნომერი"
+msgstr ""
 
 #: apps/corporations/templates/corporations/detail.html:23
 msgid "State registration code"
-msgstr "სახელმწიფო რეგისტრაციის ნომერი"
+msgstr ""
 
 #: apps/corporations/templates/corporations/detail.html:27
 msgid "Registration date"
-msgstr "რეგისტრაციის თარიღი"
+msgstr ""
 
 #: apps/corporations/templates/corporations/detail.html:31
 msgid "View details from the Public Registry database"
-msgstr "იხილეთ დეტალურად საჯარო რეესტრის მონაცემთა ბაზაში"
+msgstr ""
 
 #: apps/corporations/templates/corporations/detail.html:31
 msgid "Public registry page"
-msgstr "საჯარო რეესტრის გვერდი"
+msgstr ""
 
 #: apps/corporations/templates/corporations/detail.html:47
 msgid "Company affiliations"
@@ -100,11 +100,11 @@ msgstr ""
 
 #: apps/corporations/templates/corporations/detail.html:53
 msgid "Person"
-msgstr "პირი"
+msgstr ""
 
 #: apps/corporations/templates/corporations/detail.html:54
 msgid "Role"
-msgstr "მონაწილეობა"
+msgstr ""
 
 #: apps/corporations/templates/corporations/detail.html:55
 msgid "Date"
@@ -113,15 +113,15 @@ msgstr ""
 #: apps/corporations/templates/corporations/detail.html:56
 #: apps/corporations/templates/corporations/detail.html:67
 msgid "Documentation"
-msgstr "დოკუმენტაცია"
+msgstr ""
 
 #: apps/corporations/templates/corporations/detail.html:63
 msgid "View profile"
-msgstr "იხილეთ პროფილი"
+msgstr ""
 
 #: apps/corporations/templates/corporations/detail.html:67
 msgid "View documentation"
-msgstr "იხილეთ დოკუმენტაცია"
+msgstr ""
 
 #: apps/corporations/templates/corporations/detail.html:77
 msgid "Details about shareholders for this company"

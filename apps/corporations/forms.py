@@ -26,12 +26,16 @@ class CorporationSearchForm(forms.Form):
                                                       label=_('Companies registered after'))
     companies_registered_before = JqSplitDateTimeField(widget=JqSplitDateTimeWidget(attrs={'date_class':'datepicker form-control','time_class':'timepicker', 'placeholder':'yyyy or yyyy-mm-dd'}),
                                                        label=_('Companies registered before'))
+    
+    
 
-class CorporationForm(ModelForm):
-    class Meta:
-        model = Corporation
-
-
-class ExtractForm(ModelForm):
-    class Meta:
-        model = Extract
+# class CorporationForm(ModelForm):
+#     class Meta:
+#         model = Corporation
+#         fields = ['id_code', 'personal_code', 'name', 'registration_date']
+# 
+# 
+# class ExtractForm(ModelForm):
+#     class Meta:
+#         model = Extract
+#         fields = ['date', 'address', 'email', 'legalform', 'corp', 'corpurl']

@@ -29,7 +29,7 @@ LANGUAGES = (
 )
 
 LOCALE_PATHS = (
-    os.path.join(PROJECT_PATH, 'locale'),
+    os.path.join(PROJECT_PATH, 'locale/'),
 )
 
 SITE_ID = 1
@@ -48,6 +48,8 @@ USE_L10N = True
 MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = PROJECT_PATH
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -85,7 +87,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(PROJECT_PATH, 'templates')
+    os.path.join(PROJECT_PATH, 'templates'),
 )
 
 INSTALLED_APPS = (
@@ -99,7 +101,6 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'south',
     'tastypie',
 
     # Custom apps
@@ -110,5 +111,7 @@ INSTALLED_APPS = (
     'sekizai',
     'debug_toolbar',
 )
+
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 from local_settings import *

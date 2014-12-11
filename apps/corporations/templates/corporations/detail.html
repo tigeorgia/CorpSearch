@@ -27,10 +27,17 @@
                     <td><strong>{% trans 'Registration date' %}:</strong></td>
                     <td>{{ corporation.registration_date }}</td>
                 <tr>
-                    <td><strong><a href="{{ corporation.registry_url }}" target="_blank"
+                    <td>
+                    	<!-- Currently direct link won't work -->
+                    	<!-- 
+                    	<strong><a href="{{ corporation.registry_url }}" target="_blank"
                            title="{% trans 'View details from the Public Registry database' %}">{% trans 'Public registry page' %}</a></strong>
+                        -->
+                        <strong>Source information:</strong>
                     </td>
-                    <td></td>
+                    <td>
+                    	Presented information is a copy of data available on public <a href=https://enreg.reestri.gov.ge/>Public Registry</a>
+                    </td>
                 </tr>
                 <tr>
                     <td><strong>{% trans 'Address' %}:</td>

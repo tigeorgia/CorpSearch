@@ -2,9 +2,9 @@ from django.db import models
 from django.core.urlresolvers import reverse
 from apps.corporations.models import Corporation
 
-# TODO: Consider adding db_index to name, personal_code
+
 class Person( models.Model ):
-    name = models.CharField( max_length = 500, blank = True, null = True )
+    name = models.CharField( max_length = 500, blank = True, null = True, db_index = True )
     personal_code = models.CharField( max_length = 200, db_index = True )
     address = models.TextField( blank = True, null = True )
 

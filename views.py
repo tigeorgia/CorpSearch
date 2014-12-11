@@ -10,7 +10,7 @@ from django.template import RequestContext
 def home( request ):
     corpsearch = CorporationSearchForm()
     personsearch = PersonSearchForm()
-    last_scraping_update = ScraperStat.objects.all().order_by( '-import_people_finish' )[0]
+    last_scraping_update = ScraperStat.objects.all().order_by( '-import_people_finish' )[0] 
 
     corpCount = Corporation.objects.all().count()
     personCount = Person.objects.all().count()

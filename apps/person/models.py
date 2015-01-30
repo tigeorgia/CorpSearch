@@ -36,8 +36,6 @@ class Person( models.Model ):
         if self. nationality is not None:
             total += len( self.nationality )
             
-    class Meta:
-        managed = True
 
 class Affiliation( models.Model ):
     person = models.ForeignKey( Person )
@@ -54,4 +52,4 @@ class Affiliation( models.Model ):
 
     class Meta:
         get_latest_by = 'valid_date'
-        managed = True
+     

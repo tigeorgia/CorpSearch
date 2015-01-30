@@ -1,42 +1,60 @@
 # -*- coding: utf-8 -*-
-import datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+from __future__ import unicode_literals
+
+from django.db import models, migrations
 
 
-class Migration(SchemaMigration):
+class Migration(migrations.Migration):
 
-    def forwards(self, orm):
-        # Adding model 'Corporation'
-        db.create_table(u'corporations_corporation', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('id_code', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
-            ('personal_code', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
-            ('state_reg_code', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
-            ('registry_db_code', self.gf('django.db.models.fields.CharField')(max_length=50)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=250)),
-            ('registration_date', self.gf('django.db.models.fields.DateField')()),
-        ))
-        db.send_create_signal(u'corporations', ['Corporation'])
+    dependencies = [
+    ]
 
-
-    def backwards(self, orm):
-        # Deleting model 'Corporation'
-        db.delete_table(u'corporations_corporation')
-
-
-    models = {
-        u'corporations.corporation': {
-            'Meta': {'object_name': 'Corporation'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'id_code': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '250'}),
-            'personal_code': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
-            'registration_date': ('django.db.models.fields.DateField', [], {}),
-            'registry_db_code': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
-            'state_reg_code': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'})
-        }
-    }
-
-    complete_apps = ['corporations']
+    operations = [
+        migrations.CreateModel(
+            name='Corporation',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id_code', models.CharField(db_index=True, max_length=50, null=True, blank=True)),
+                ('personal_code', models.CharField(max_length=100, null=True, blank=True)),
+                ('state_reg_code', models.CharField(max_length=100, null=True, blank=True)),
+                ('registry_db_code', models.CharField(max_length=100)),
+                ('name', models.CharField(max_length=1000, db_index=True)),
+                ('registration_date', models.DateField(null=True, blank=True)),
+            ],
+            options={
+                'managed': True,
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Extract',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('date', models.DateTimeField(null=True, blank=True)),
+                ('address', models.TextField(null=True, blank=True)),
+                ('email', models.CharField(max_length=750, null=True, blank=True)),
+                ('corpurl', models.CharField(max_length=750, null=True, blank=True)),
+                ('corp', models.ForeignKey(to='corporations.Corporation')),
+            ],
+            options={
+                'managed': True,
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='LegalFormLookup',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=250, null=True, blank=True)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='extract',
+            name='legalform',
+            field=models.ForeignKey(blank=True, to='corporations.LegalFormLookup', null=True),
+            preserve_default=True,
+        ),
+    ]

@@ -38,6 +38,9 @@ class Corporation( models.Model ):
 
     def __unicode__( self ):
         return self.name
+    
+    class Meta:
+        managed = True
 
 
 class LegalFormLookup( models.Model ):
@@ -60,4 +63,7 @@ class Extract( models.Model ):
 
     def __unicode__( self ):
         return self.corp
+    
+    class Meta:
+        managed = True
 

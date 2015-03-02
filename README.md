@@ -46,3 +46,9 @@ PostgreSQL) in the scripts folder. They use the [Fabric](http://docs.fabfile.org
 You'll need to write your own fabfile.py importing the modules in scripts. That
 file is deliberately missing from this repository in order to avoid exposing
 server configuration details.
+
+
+License
+=======
+
+Company Info is released under the terms of [GNU General Public License (V2)](http://www.gnu.org/licenses/gpl-2.0.html).

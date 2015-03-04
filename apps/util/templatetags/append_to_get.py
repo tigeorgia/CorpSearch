@@ -1,4 +1,5 @@
 from django import template
+from django.utils.html import escape
 
 register = template.Library()
 
@@ -53,7 +54,7 @@ class AppendGetNode(template.Node):
             path += "?%s" % "&".join(["%s=%s" % (key, value) for (key, value) in get.items() if value])
         
         
-        return path
+        return escape(path)
 
 @register.tag()
 @easy_tag

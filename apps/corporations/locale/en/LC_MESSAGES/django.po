@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-11 11:23+0400\n"
+"POT-Creation-Date: 2015-05-08 18:56+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,12 +29,12 @@ msgstr ""
 
 #: apps/corporations/forms.py:18
 #: apps/corporations/templates/corporations/corporation_list.html:10
-#: apps/corporations/templates/corporations/detail.html:36
+#: apps/corporations/templates/corporations/detail.html:43
 msgid "Address"
 msgstr ""
 
 #: apps/corporations/forms.py:20
-#: apps/corporations/templates/corporations/detail.html:40
+#: apps/corporations/templates/corporations/detail.html:47
 msgid "Email"
 msgstr ""
 
@@ -58,11 +58,11 @@ msgstr ""
 msgid "Registry link"
 msgstr ""
 
-#: apps/corporations/templates/corporations/corporation_list.html:23
+#: apps/corporations/templates/corporations/corporation_list.html:24
 msgid "View on registry"
 msgstr ""
 
-#: apps/corporations/templates/corporations/corporation_list.html:31
+#: apps/corporations/templates/corporations/corporation_list.html:33
 msgid "Download for Excel"
 msgstr ""
 
@@ -86,43 +86,43 @@ msgstr ""
 msgid "Registration date"
 msgstr ""
 
-#: apps/corporations/templates/corporations/detail.html:31
+#: apps/corporations/templates/corporations/detail.html:34
 msgid "View details from the Public Registry database"
 msgstr ""
 
-#: apps/corporations/templates/corporations/detail.html:31
+#: apps/corporations/templates/corporations/detail.html:34
 msgid "Public registry page"
 msgstr ""
 
-#: apps/corporations/templates/corporations/detail.html:47
+#: apps/corporations/templates/corporations/detail.html:54
 msgid "Company affiliations"
 msgstr ""
 
-#: apps/corporations/templates/corporations/detail.html:53
+#: apps/corporations/templates/corporations/detail.html:60
 msgid "Person"
 msgstr ""
 
-#: apps/corporations/templates/corporations/detail.html:54
+#: apps/corporations/templates/corporations/detail.html:61
 msgid "Role"
 msgstr ""
 
-#: apps/corporations/templates/corporations/detail.html:55
+#: apps/corporations/templates/corporations/detail.html:62
 msgid "Date"
 msgstr ""
 
-#: apps/corporations/templates/corporations/detail.html:56
-#: apps/corporations/templates/corporations/detail.html:67
+#: apps/corporations/templates/corporations/detail.html:63
+#: apps/corporations/templates/corporations/detail.html:74
 msgid "Documentation"
 msgstr ""
 
-#: apps/corporations/templates/corporations/detail.html:63
+#: apps/corporations/templates/corporations/detail.html:70
 msgid "View profile"
 msgstr ""
 
-#: apps/corporations/templates/corporations/detail.html:67
+#: apps/corporations/templates/corporations/detail.html:74
 msgid "View documentation"
 msgstr ""
 
-#: apps/corporations/templates/corporations/detail.html:77
+#: apps/corporations/templates/corporations/detail.html:84
 msgid "Details about shareholders for this company"
 msgstr ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-11 11:23+0400\n"
+"POT-Creation-Date: 2015-05-08 18:56+0400\n"
 "PO-Revision-Date: 2013-05-28 15:50+0400\n"
 "Last-Translator: Tornike Natroshvili <tornike@transparency.ge>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,12 +29,12 @@ msgstr "საიდენტიფიკაციო კოდი"
 
 #: apps/corporations/forms.py:18
 #: apps/corporations/templates/corporations/corporation_list.html:10
-#: apps/corporations/templates/corporations/detail.html:36
+#: apps/corporations/templates/corporations/detail.html:43
 msgid "Address"
 msgstr "მისამართი"
 
 #: apps/corporations/forms.py:20
-#: apps/corporations/templates/corporations/detail.html:40
+#: apps/corporations/templates/corporations/detail.html:47
 msgid "Email"
 msgstr "ელ. ფოსტა"
 
@@ -58,11 +58,11 @@ msgstr "საიდენტიფიკაციო კოდი"
 msgid "Registry link"
 msgstr "რეგისტრაციის ლინკი"
 
-#: apps/corporations/templates/corporations/corporation_list.html:23
+#: apps/corporations/templates/corporations/corporation_list.html:24
 msgid "View on registry"
 msgstr "იხილეთ რეესტრი"
 
-#: apps/corporations/templates/corporations/corporation_list.html:31
+#: apps/corporations/templates/corporations/corporation_list.html:33
 msgid "Download for Excel"
 msgstr "ჩამოტვირთეთ Excel-ისთვის"
 
@@ -86,43 +86,43 @@ msgstr "სახელმწიფო რეგისტრაციის ნ�
 msgid "Registration date"
 msgstr "რეგისტრაციის თარიღი"
 
-#: apps/corporations/templates/corporations/detail.html:31
+#: apps/corporations/templates/corporations/detail.html:34
 msgid "View details from the Public Registry database"
 msgstr "იხილეთ დეტალურად საჯარო რეესტრის მონაცემთა ბაზაში"
 
-#: apps/corporations/templates/corporations/detail.html:31
+#: apps/corporations/templates/corporations/detail.html:34
 msgid "Public registry page"
 msgstr "საჯარო რეესტრის გვერდი"
 
-#: apps/corporations/templates/corporations/detail.html:47
+#: apps/corporations/templates/corporations/detail.html:54
 msgid "Company affiliations"
 msgstr ""
 
-#: apps/corporations/templates/corporations/detail.html:53
+#: apps/corporations/templates/corporations/detail.html:60
 msgid "Person"
 msgstr "პირი"
 
-#: apps/corporations/templates/corporations/detail.html:54
+#: apps/corporations/templates/corporations/detail.html:61
 msgid "Role"
 msgstr "მონაწილეობა"
 
-#: apps/corporations/templates/corporations/detail.html:55
+#: apps/corporations/templates/corporations/detail.html:62
 msgid "Date"
 msgstr ""
 
-#: apps/corporations/templates/corporations/detail.html:56
-#: apps/corporations/templates/corporations/detail.html:67
+#: apps/corporations/templates/corporations/detail.html:63
+#: apps/corporations/templates/corporations/detail.html:74
 msgid "Documentation"
 msgstr "დოკუმენტაცია"
 
-#: apps/corporations/templates/corporations/detail.html:63
+#: apps/corporations/templates/corporations/detail.html:70
 msgid "View profile"
 msgstr "იხილეთ პროფილი"
 
-#: apps/corporations/templates/corporations/detail.html:67
+#: apps/corporations/templates/corporations/detail.html:74
 msgid "View documentation"
 msgstr "იხილეთ დოკუმენტაცია"
 
-#: apps/corporations/templates/corporations/detail.html:77
+#: apps/corporations/templates/corporations/detail.html:84
 msgid "Details about shareholders for this company"
 msgstr ""

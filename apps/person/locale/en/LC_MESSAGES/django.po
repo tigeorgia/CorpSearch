@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-11 11:23+0400\n"
+"POT-Creation-Date: 2015-05-08 18:56+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,66 +25,73 @@ msgstr ""
 msgid "Personal number"
 msgstr ""
 
-#: apps/person/forms.py:10 apps/person/templates/person/person_detail.html:30
+#: apps/person/forms.py:10 apps/person/templates/person/person_detail.html:33
 #: apps/person/templates/person/person_list.html:10
 msgid "Address"
 msgstr ""
 
-#: apps/person/forms.py:12 apps/person/templates/person/person_detail.html:48
+#: apps/person/forms.py:12 apps/person/templates/person/person_detail.html:57
 msgid "Nationality"
 msgstr ""
 
-#: apps/person/templates/person/person_detail.html:25
-#: apps/person/templates/person/person_detail.html:34
-#: apps/person/templates/person/person_detail.html:43
+#: apps/person/templates/person/person_detail.html:24
+#: apps/person/templates/person/person_detail.html:36
+#: apps/person/templates/person/person_detail.html:48
+#: apps/person/templates/person/person_detail.html:60
+msgid "Removed"
+msgstr ""
+
+#: apps/person/templates/person/person_detail.html:28
+#: apps/person/templates/person/person_detail.html:40
 #: apps/person/templates/person/person_detail.html:52
+#: apps/person/templates/person/person_detail.html:64
 msgid "Unknown"
 msgstr ""
 
-#: apps/person/templates/person/person_detail.html:39
+#: apps/person/templates/person/person_detail.html:45
 msgid "Date of birth"
 msgstr ""
 
-#: apps/person/templates/person/person_detail.html:61
+#: apps/person/templates/person/person_detail.html:73
 msgid "Listed affiliations"
 msgstr ""
 
-#: apps/person/templates/person/person_detail.html:65
-#: apps/person/templates/person/person_detail.html:95
+#: apps/person/templates/person/person_detail.html:77
+#: apps/person/templates/person/person_detail.html:107
 msgid "Company"
 msgstr ""
 
-#: apps/person/templates/person/person_detail.html:66
+#: apps/person/templates/person/person_detail.html:78
 msgid "Role"
 msgstr ""
 
-#: apps/person/templates/person/person_detail.html:67
-#: apps/person/templates/person/person_detail.html:97
+#: apps/person/templates/person/person_detail.html:79
+#: apps/person/templates/person/person_detail.html:109
 msgid "Date"
 msgstr ""
 
-#: apps/person/templates/person/person_detail.html:68
-#: apps/person/templates/person/person_detail.html:81
-#: apps/person/templates/person/person_detail.html:98
-#: apps/person/templates/person/person_detail.html:111
+#: apps/person/templates/person/person_detail.html:80
+#: apps/person/templates/person/person_detail.html:93
+#: apps/person/templates/person/person_detail.html:110
+#: apps/person/templates/person/person_detail.html:123
 msgid "Documentation"
 msgstr ""
 
-#: apps/person/templates/person/person_detail.html:76
-#: apps/person/templates/person/person_detail.html:106
+#: apps/person/templates/person/person_detail.html:88
+#: apps/person/templates/person/person_detail.html:118
 msgid "View detail"
 msgstr ""
 
-#: apps/person/templates/person/person_detail.html:81
-#: apps/person/templates/person/person_detail.html:111
+#: apps/person/templates/person/person_detail.html:93
+#: apps/person/templates/person/person_detail.html:123
 msgid "View documentation"
 msgstr ""
 
-#: apps/person/templates/person/person_detail.html:91
+#: apps/person/templates/person/person_detail.html:103
 msgid "Listed ownership interests"
 msgstr ""
 
-#: apps/person/templates/person/person_detail.html:96
+#: apps/person/templates/person/person_detail.html:108
 msgid "Share"
 msgstr ""
 
@@ -96,6 +103,6 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: apps/person/templates/person/person_list.html:28
+#: apps/person/templates/person/person_list.html:39
 msgid "Download for Excel"
 msgstr ""

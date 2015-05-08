@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-11 11:23+0400\n"
+"POT-Creation-Date: 2015-05-08 18:56+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,11 @@ msgid ""
 "International Development Cooperation Agency (Sida)."
 msgstr ""
 
-#: templates/home.html:16
+#: templates/home.html:10
+msgid "Last update: September 6th 2014"
+msgstr ""
+
+#: templates/home.html:19
 #, python-format
 msgid ""
 "\n"
@@ -48,19 +52,19 @@ msgid ""
 "                        "
 msgstr ""
 
-#: templates/home.html:25 templates/home.html.py:56
+#: templates/home.html:28 templates/home.html.py:59
 msgid "Georgian keyboard"
 msgstr ""
 
-#: templates/home.html:31 templates/home.html.py:60
+#: templates/home.html:34 templates/home.html.py:63
 msgid "Search"
 msgstr ""
 
-#: templates/home.html:42
+#: templates/home.html:45
 msgid "Search People"
 msgstr ""
 
-#: templates/home.html:47
+#: templates/home.html:50
 #, python-format
 msgid ""
 "\n"

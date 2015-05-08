@@ -15,7 +15,8 @@ class Person( models.Model ):
 
     '''
     the field will indicate whether the website should add a tag to the site presenting a person's information
-    this will stop Google from inxexing this person's listing, thus not showing the details in search results
+    this will stop Google from inxexing this person's listing, thus not showing the details in search results.
+    Also, this will remove private information from detail view
     '''
     no_index_tag = models.NullBooleanField( null = True, blank = True )
 

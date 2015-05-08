@@ -5,10 +5,10 @@
 
 <!-- when a person requests his/her data not to be indexed by search engines -->
 {% block noindex %}
-	{% if person.no_index_tag %}
-	<meta name="robots" content="noindex">
-	<meta name="googlebot" content="noindex">
-	{% endif %}
+    {% if person.no_index_tag %}
+        <meta name="robots" content="noindex">
+        <meta name="googlebot" content="noindex">
+    {% endif %}
 {% endblock %}
 
 {% block perscontent %}
@@ -19,38 +19,50 @@
                 <tbody>
                 <tr>
                     <td>{% trans 'Personal number' %}:</td>
-                    <td>{% if person.personal_code %}
-                        {{ person.personal_code }}
-                    {% else %}
-                        {% trans "Unknown" %}
-                    {% endif %}
+                    <td>
+                        {% if person.no_index_tag %}
+                            {% trans "Removed" %}
+                        {% elif person.personal_code %}
+                            {{ person.personal_code }}
+                        {% else %}
+                            {% trans "Unknown" %}
+                        {% endif %}
                     </td>
                 </tr>
                 <tr>
                     <td>{% trans 'Address' %}:</td>
-                    <td>{% if person.address %}
-                        {{ person.address|ka_translit:LANGUAGE_CODE }}
-                    {% else %}
-                        {% trans "Unknown" %}
-                    {% endif %}
+                    <td>
+                        {% if person.no_index_tag %}
+                            {% trans "Removed" %}
+                        {% elif person.address %}
+                            {{ person.address|ka_translit:LANGUAGE_CODE }}
+                        {% else %}
+                            {% trans "Unknown" %}
+                        {% endif %}
                     </td>
                 </tr>
                 <tr>
                     <td>{% trans 'Date of birth' %}:</td>
-                    <td>{% if person.dob %}
-                        {{ person.dob }}
-                    {% else %}
-                        {% trans "Unknown" %}
-                    {% endif %}
+                    <td>
+                        {% if person.no_index_tag %}
+                            {% trans "Removed" %}
+                        {% elif person.dob %}
+                            {{ person.dob }}
+                        {% else %}
+                            {% trans "Unknown" %}
+                        {% endif %}
                     </td>
                 </tr>
                 <tr>
                     <td>{% trans 'Nationality' %}:</td>
-                    <td>{% if person.nationality %}
-                        {{ person.nationality|ka_translit:LANGUAGE_CODE }}
-                    {% else %}
-                        {% trans "Unknown" %}
-                    {% endif %}
+                    <td>
+                        {% if person.no_index_tag %}
+                            {% trans "Removed" %}
+                        {% elif person.nationality %}
+                            {{ person.nationality|ka_translit:LANGUAGE_CODE }}
+                        {% else %}
+                            {% trans "Unknown" %}
+                        {% endif %}
                     </td>
                 </tbody>
             </table>

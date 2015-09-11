@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from .models import Corporation, LegalFormLookup
+from .models import Corporation, LegalFormLookup, Extract
 from apps.person.models import Affiliation
 from .forms import CorporationSearchForm
 from apps.util.views import CsvResponseMixin
 
+from django.db.models import Prefetch
 from django.http import HttpResponsePermanentRedirect
 from django.views.generic.list import ListView, BaseListView, MultipleObjectTemplateResponseMixin
 from django.views.generic.detail import DetailView
@@ -19,6 +20,14 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 class CorporationListView(BaseListView):
     model = Corporation
     context_object_name = 'corporations'
+
+    def get_queryset(self):
+        qs = super(CorporationListView, self).get_queryset()
+
+        # Prefetch related to save unnecessary queries. Sometimes, for some reason
+        # extract date is not set, so the highest id should be the latest one.
+        qs = qs.prefetch_related(Prefetch("extract_set", queryset=Extract.objects.order_by('-date', 'id'), to_attr='extracts'))
+        return qs
 
 
 class CorporationSearchView(CorporationListView):
@@ -39,13 +48,13 @@ class CorporationSearchView(CorporationListView):
         if chosenEmail:
             qs = qs.filter(extract__email__icontains=chosenEmail).distinct()
 
-        chosenName = self.request.GET.get('name')
-        if chosenName:
-            qs = qs.filter(name__icontains=chosenName)
-
         chosenLegalFormId = self.request.GET.get('legal_form')
         if chosenLegalFormId and int(chosenLegalFormId) > 0:
             qs = qs.filter(extract__legalform__id=chosenLegalFormId)
+
+        chosenName = self.request.GET.get('name')
+        if chosenName:
+            qs = qs.filter(name__icontains=chosenName)
 
         companiesRegisteredAfter = self.request.GET.get('companies_registered_after_0')
         if companiesRegisteredAfter:
@@ -71,7 +80,7 @@ class CorporationPagedTemplateSearchView(CorporationSearchView, MultipleObjectTe
 
 
 class CorporationCsvSearchView(CorporationSearchView, CsvResponseMixin):
-    pass
+    additional_fields = {'extracts': ('address',)}
 
 
 class CorporationDetailView(DetailView):

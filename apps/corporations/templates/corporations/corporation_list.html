@@ -18,7 +18,7 @@
                 <td>{{ c.id_code }}</td>
                 <td><a href="{{ c.get_absolute_url }}"
                        title="View corporation details">{{ c.name|ka_translit:LANGUAGE_CODE }}</a></td>
-                <td>{{ c.get_latest_extract.address|ka_translit:LANGUAGE_CODE }}</td>
+                <td>{{ c.extracts.0.address|ka_translit:LANGUAGE_CODE }}</td>
                 <!-- 
                 <td><a href="{{ c.registry_url }}" title="View on public registry"
                        target="_blank">{% trans 'View on registry' %}</a></td>
